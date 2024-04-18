@@ -10,7 +10,7 @@ const Membership = () => {
                 <div className="background-container">
                     <img src={backgroundImage2} alt="Background" className="background-image" />
                 </div>
-                <div id="checkout" className="checkout-container">
+                <div id="checkout" className="" style={{ width: '100%', display: 'flex', alignItems: 'center' }}>
                     <StripeCheckout />
                 </div>
             </main>
