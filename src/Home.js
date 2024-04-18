@@ -25,7 +25,7 @@ const Home = () => {
 
     return (
         <div style={{ backgroundImage: `url(${backgroundImage})`, height: '100vh', display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end', backgroundRepeat: 'no-repeat', backgroundSize: 'contain', backgroundPosition: 'center', backgroundColor: 'black' }}>
-            <p style={{ transform: 'translate(-25%, -25%)', color: 'white' }}>hello</p>
+            <p style={{ transform: 'translate(-25%, -25%)', color: 'white' }}>hello2</p>
             <div style={{ position: 'absolute', right: 0, top: 0, width: '50%', height: '100%' }} onClick={handleButtonClick}></div>
         </div>
     );
