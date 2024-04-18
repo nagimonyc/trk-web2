@@ -14,14 +14,13 @@ function StripeCheckout() {
         setupStripe();
 
         return () => {
-            // Use the unmount method to clean up the Stripe element
             if (stripeCheckoutInstanceRef.current) {
                 stripeCheckoutInstanceRef.current.unmount();
             }
         };
     }, []);
 
-    return null; // The UI is handled by Stripe, so we render nothing.
+    return null;
 }
 
 export default StripeCheckout;
