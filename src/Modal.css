@@ -1,0 +1,94 @@
+/* Modal.css */
+
+:root {
+    --max-width: 820px;
+    --max-width-wide-page: 960px;
+    --max-width-extra-wide-page: 1080px;
+    --horizontal-padding: 1rem;
+    --small-border-radius: 0.25rem;
+    --border-radius: 0.5rem;
+    --large-border-radius: 1rem;
+    --modal-border-radius: var(--large-border-radius);
+    --card-border-radius: 0.75rem;
+    --content-card-vertical-padding: 1rem;
+    --content-card-horizontal-padding: 1.125rem;
+    --event-row-padding: 0.75rem 1rem;
+    --event-row-margin: 0;
+    --event-row-border-radius: 0;
+    --chat-z-index: 900;
+    --overlay-z-index: 1000;
+}
+
+/* Modal.css */
+.modal-overlay {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* Aligns modal at the start vertically */
+    padding-top: 15vh;
+    /* Starts the modal somewhat down from the top */
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    /* Prevents any content outside the modal from scrolling */
+    z-index: var(--overlay-z-index);
+    /* Ensures the overlay is properly layered above other content */
+    scrollbar-gutter: stable;
+    /* Opt-in to stable scrollbar behavior in browsers that support it */
+    --overlay-content-padding: 0;
+    /* Custom property for potential use in padding adjustments */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent background */
+}
+
+
+.modal-content {
+    padding: var(--content-card-vertical-padding) var(--content-card-horizontal-padding);
+    background-color: #FFFFFF;
+    border-radius: var(--modal-border-radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: var(--max-width);
+    width: auto;
+    /* Adjust based on content */
+    z-index: 3;
+    /* Ensure it is above the overlay */
+}
+
+.modal-header,
+.modal-body,
+.modal-footer {
+    padding: var(--horizontal-padding);
+}
+
+.modal-close {
+    cursor: pointer;
+    margin-top: 10px;
+    border: none;
+    background: none;
+}
+
+.modal-input {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: var(--horizontal-padding);
+    /* Consistent spacing */
+}
+
+.modal-label {
+    display: block;
+}
+
+.modal-header h2 {
+    font-size: 24px; /* Larger font size for the header */
+    font-weight: bold; /* Makes the text bold */
+    margin-bottom: 0.5rem; /* Adds some space below the header */
+}
+
+.modal-header p.subtitle {
+    font-size: 16px; /* Smaller font size for the subtitle */
+    color: #666; /* Lighter text color for less emphasis */
+    margin-bottom: 1rem; /* Adds more space below the subtitle before the next content */
+}

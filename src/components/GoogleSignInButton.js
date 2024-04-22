@@ -2,6 +2,7 @@
 import React from 'react';
 import { app } from '../firebase-config'; // Adjust the import path as needed
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import googleLogo from '../images/white-google-logo.png'; // Adjust the import path as needed
 
 const GoogleSignInButton = ({ onSuccess, onError }) => {
     const signInWithGoogle = async () => {
@@ -37,7 +38,12 @@ const GoogleSignInButton = ({ onSuccess, onError }) => {
     };
 
     return (
-        <button onClick={(e) => { e.preventDefault(); signInWithGoogle(); }}>Sign in with Google</button>
+        <button style={{ width: '100%', height: 35, borderRadius: 7.5, borderColor: 'transparent', backgroundColor: 'gray', color: 'white', fontWeight: '700', fontSize: 16, justifyContent: 'center', display: 'flex', alignItems: 'center' }} onClick={(e) => { e.preventDefault(); signInWithGoogle(); }}>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <img src={googleLogo} alt="Google Logo" style={{ width: 20, height: 20, marginRight: 10 }} />
+            </div>
+            Continue with Google
+        </button>
     );
 };
 
