@@ -1,7 +1,7 @@
 // GoogleSignInButton.js
 import React from 'react';
-import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { app } from '../firebase-config'; // Adjust the import path as needed
+import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 
 const GoogleSignInButton = ({ onSuccess, onError }) => {
     const signInWithGoogle = async () => {
@@ -17,9 +17,11 @@ const GoogleSignInButton = ({ onSuccess, onError }) => {
             const user = result.user;
             // Call the onSuccess callback if it exists.
             if (onSuccess) {
+                console.log('Signed in as:', user);
                 onSuccess(user, token);
             }
         } catch (error) {
+            console.log('Google Sign-In error:', error.message)
             // Handle Errors here.
             const errorCode = error.code;
             const errorMessage = error.message;
@@ -35,7 +37,7 @@ const GoogleSignInButton = ({ onSuccess, onError }) => {
     };
 
     return (
-        <button onClick={signInWithGoogle}>Sign in with Google</button>
+        <button onClick={(e) => { e.preventDefault(); signInWithGoogle(); }}>Sign in with Google</button>
     );
 };
 
