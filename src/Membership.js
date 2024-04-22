@@ -51,7 +51,7 @@ const Membership = () => {
                     <img src={backgroundImage2} alt="Background" className="background-image" />
                 </div>
                 <div id="checkout" className="" style={{ width: '100%', display: 'flex', alignItems: 'center' }}>
-                    <StripeCheckout />
+                    {/* <StripeCheckout /> */}
                 </div>
             </main>
         </div>
