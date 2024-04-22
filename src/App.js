@@ -5,6 +5,7 @@ import Membership from './Membership';
 
 
 function App() {
+  console.log('App component mounted');
   return (
     <Router>
       <Routes>
