@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import StripeCheckout from "./components/StripeCheckout";
 import backgroundImage2 from './images/IMG_8105.jpeg';
 import './Membership.css';  // Assume we create this CSS file
@@ -7,12 +7,8 @@ import GoogleSignInButton from "./components/GoogleSignInButton";
 
 
 const Membership = () => {
-    const [isModalOpen, setIsModalOpen] = React.useState(false);
-
-    useEffect(() => {
-        setIsModalOpen(true);
-    },
-        []);
+    console.log('Membership component mounted')
+    const [isModalOpen, setIsModalOpen] = useState(true);
 
     const closeModal = () => {
         setIsModalOpen(false);
@@ -28,7 +24,14 @@ const Membership = () => {
         // Handle the sign-in error
     };
 
+    useEffect(() => {
+        console.log('Membership component mounted or updated');
+    }, []); // This logs on mount
 
+    // Adding dependency to useEffect to see if updates relate to state changes
+    useEffect(() => {
+        console.log('Modal state changed', isModalOpen);
+    }, [isModalOpen]);
 
 
     return (
@@ -51,7 +54,7 @@ const Membership = () => {
                     <img src={backgroundImage2} alt="Background" className="background-image" />
                 </div>
                 <div id="checkout" className="" style={{ width: '100%', display: 'flex', alignItems: 'center' }}>
-                    {/* <StripeCheckout /> */}
+                    <StripeCheckout />
                 </div>
             </main>
         </div>
