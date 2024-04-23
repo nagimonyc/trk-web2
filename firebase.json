@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "https://nagimo.web.app/",
+    "site": "nagimo",
     "public": "build",
     "ignore": [
       "firebase.json",
