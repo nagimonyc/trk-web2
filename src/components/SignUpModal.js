@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { signInUser, registerUser, signInWithGoogle, addUserToFirestore } from '../services/firebase-services'; // Adjust the path as needed
 import GoogleSignInButton from "./GoogleSignInButton";
 import doorLogo from '../images/Group-3.png';
+import { useAuth } from '../AuthContext';
+
 
 const Modal = ({ isOpen, onClose, children }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const { currentUser, updateUserDocument } = useAuth();
 
     if (!isOpen) return null;
 
@@ -13,13 +16,16 @@ const Modal = ({ isOpen, onClose, children }) => {
         try {
             const userCredential = await registerUser(email, password);
             console.log('User signed up:', userCredential.user);
-            await addUserToFirestore(userCredential.user, {
-                role: 'climber', // Adjust details as needed
-                origin: 'web', // Adjust details as needed
-                timestamp: new Date(),
-                username: email.split('@')[0],
-                isNewUser: true,
-            });
+            if (userCredential.user) {
+                updateUserDocument(userCredential.user.uid, {
+                    role: 'climber', // Adjust details as needed
+                    origin: 'web', // Adjust details as needed
+                    timestamp: new Date(),
+                    username: email.split('@')[0],
+                    isNewUser: true,
+                });
+            }
+
             console.log('User added to Firestore');
             onClose(); // Close the modal upon successful sign-up
         } catch (error) {

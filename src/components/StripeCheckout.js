@@ -1,30 +1,41 @@
 import React, { useEffect, useRef } from 'react';
 import { initializeStripe } from '../services/stripeService';
+import { useAuth } from '../AuthContext';
 
 function StripeCheckout() {
-    console.log('StripeCheckout component mounted');
+    const { currentUser } = useAuth();
     const stripeCheckoutInstanceRef = useRef(null);
 
     useEffect(() => {
-        console.log('StripeCheckout mounting');
-        const setupStripe = async () => {
-            const stripeCheckoutInstance = await initializeStripe();
-            stripeCheckoutInstanceRef.current = stripeCheckoutInstance;
-            stripeCheckoutInstance.mount('#checkout');
-        };
+        async function setupStripe() {
+            if (currentUser && currentUser.uid) {
+                console.log('Setting up stripe with userId:', currentUser.uid);
+                try {
+                    const stripeCheckoutInstance = await initializeStripe(currentUser.uid);
+                    stripeCheckoutInstanceRef.current = stripeCheckoutInstance;
+                    stripeCheckoutInstance.mount('#checkout');
+                    console.log('Stripe mounted');
+                } catch (error) {
+                    console.error('Error setting up Stripe:', error);
+                }
+            }
+        }
 
-        setupStripe();
+        if (currentUser?.uid) {
+            setupStripe();
+        }
 
         return () => {
-            if (stripeCheckoutInstanceRef.current) {
-                console.log('StripeCheckout unmounting');
-                stripeCheckoutInstanceRef.current.unmount();
-            }
+            console.log('Unmounting Stripe');
+            stripeCheckoutInstanceRef.current?.unmount();
         };
-    }, []);
+    }, [currentUser?.uid]); // Depend on currentUser.uid to re-run the effect
 
-    return null;
+    if (!currentUser?.uid) {
+        return <div>Please sign in to proceed with payment.</div>;
+    }
+
+    return null; // Or render something related to the checkout process
 }
-
 
 export default StripeCheckout;
