@@ -1,6 +1,6 @@
 // GoogleSignInButton.js
 import React from 'react';
-import { app } from '../firebase-config'; // Adjust the import path as needed
+import { app } from '../services/firebase-services'; // Adjust the import path as needed
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import googleLogo from '../images/white-google-logo.png'; // Adjust the import path as needed
 
@@ -11,18 +11,22 @@ const GoogleSignInButton = ({ onSuccess, onError }) => {
 
         try {
             const result = await signInWithPopup(auth, provider);
+            console.log('Google Sign-In result:', result);
             // This gives you a Google Access Token. You can use it to access Google APIs.
             const credential = GoogleAuthProvider.credentialFromResult(result);
+            console.log('Google Sign-In credential:', credential);
             const token = credential.accessToken;
+            console.log('Google Sign-In token:', token);
             // The signed-in user info.
             const user = result.user;
+            console.log('Google Sign-In user:', user);
             // Call the onSuccess callback if it exists.
             if (onSuccess) {
                 console.log('Signed in as:', user);
                 onSuccess(user, token);
             }
         } catch (error) {
-            console.log('Google Sign-In error:', error.message)
+            console.log('Google Sign-In error 123:', error.message)
             // Handle Errors here.
             const errorCode = error.code;
             const errorMessage = error.message;

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { signInUser, registerUser, signInWithGoogle, addUserToFirestore } from '../services/firebase-services'; // Adjust the path as needed
+import { signInUser, registerUser, signInWithGoogle, addUserToFirestore, db } from '../services/firebase-services'; // Adjust the path as needed
 import GoogleSignInButton from "./GoogleSignInButton";
 import doorLogo from '../images/Group-3.png';
 import { useAuth } from '../AuthContext';
+import { getFirestore, doc, setDoc, getDoc, collection } from "firebase/firestore"; // include getDoc and collection
 
 
 const Modal = ({ isOpen, onClose, children }) => {
@@ -33,21 +34,31 @@ const Modal = ({ isOpen, onClose, children }) => {
         }
     };
 
-    const handleGoogleSignInSuccess = (user, token) => {
+    const handleGoogleSignInSuccess = async (user, token) => {
         console.log('Signed in as:', user);
-        // Add Google user to Firestore
-        addUserToFirestore(user, {
-            role: 'climber',
-            timestamp: new Date(),
-            username: user.email.split('@')[0],
-            isNewUser: true,
-        }).then(() => {
-            console.log('Google user added to Firestore');
-            onClose(); // Close the modal upon successful sign-in
-        }).catch((error) => {
-            console.error('Error adding Google user to Firestore:', error);
-        });
+
+        const userRef = doc(db, "users", user.uid); // Use the correct method to get a document reference
+        const docSnapshot = await getDoc(userRef);
+        if (docSnapshot.exists()) {
+            console.log('User already exists, not creating a new Firestore entry.');
+        } else {
+            await addUserToFirestore(user, {
+                role: 'climber',
+                timestamp: new Date(),
+                username: user.email.split('@')[0],
+                isNewUser: true,
+            });
+            console.log('New Google user added to Firestore');
+        }
+        console.log('Closing modal now');
+        onClose(); // Close the modal upon successful check or addition
     };
+
+    // Adjust your GoogleSignInButton to handle the new signInWithGoogle function
+
+
+
+
 
     const handleGoogleSignInError = (errorCode, errorMessage, email, credential) => {
         console.error('Google Sign-In error:', errorMessage);
