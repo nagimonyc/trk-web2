@@ -3,14 +3,21 @@ import StripeCheckout from "./components/StripeCheckout";
 import backgroundImage2 from './images/IMG_8105.jpeg';
 import './Membership.css';  // Assume we create this CSS file
 import Modal from "./components/SignUpModal";
+import { useAuth } from "./AuthContext";
 
 
 const Membership = () => {
     console.log('Membership component mounted')
+    const { currentUser, updateUserDocument } = useAuth();
     const [isModalOpen, setIsModalOpen] = useState(true);
 
-    const closeModal = () => {
-        setIsModalOpen(false);
+    const closeModal = () => { setIsModalOpen(false); };
+
+    const handlePaymentCompletion = () => {
+        console.log('Payment completed!');
+        if (currentUser) {
+            updateUserDocument(currentUser.uid, { paid: true });
+        }
     };
 
 
