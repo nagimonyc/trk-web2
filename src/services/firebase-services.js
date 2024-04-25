@@ -1,4 +1,3 @@
-// firebase-services.js
 import { initializeApp } from "firebase/app";
 import {
     getAuth,
@@ -9,7 +8,7 @@ import {
     signInWithPopup,
     signOut,
 } from "firebase/auth";
-import { getFirestore, doc, setDoc } from "firebase/firestore";
+import { getFirestore, doc, setDoc, getDoc, collection } from "firebase/firestore"; // include getDoc and collection
 
 const firebaseConfig = {
     apiKey: "AIzaSyA2IY2lRkSTLCJU-P5DlA38gjrL--cTcuk",
@@ -54,4 +53,4 @@ const addUserToFirestore = (user, additionalDetails) => {
     });
 };
 
-export { auth, db, registerUser, signInUser, resetPassword, signInWithGoogle, logOut, addUserToFirestore };
+export { app, auth, db, registerUser, signInUser, resetPassword, signInWithGoogle, logOut, addUserToFirestore };
