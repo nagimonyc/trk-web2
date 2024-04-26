@@ -21,13 +21,14 @@ function StripeCheckout() {
             }
         }
 
-        if (currentUser?.uid) {
-            setupStripe();
-        }
+        setupStripe();
 
         return () => {
-            console.log('Unmounting Stripe');
-            stripeCheckoutInstanceRef.current?.unmount();
+            console.log('Cleaning up Stripe');
+            if (stripeCheckoutInstanceRef.current) {
+                stripeCheckoutInstanceRef.current.unmount();
+                stripeCheckoutInstanceRef.current = null;
+            }
         };
     }, [currentUser?.uid]); // Depend on currentUser.uid to re-run the effect
 

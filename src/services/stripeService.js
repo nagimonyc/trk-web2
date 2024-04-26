@@ -11,8 +11,6 @@ export const fetchClientSecret = async (userId) => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                amount: 50, // Minor correction: amount should likely be in cents (500 cents = $5)
-                currency: 'usd',
                 metadata: { userId }
             }),
         });

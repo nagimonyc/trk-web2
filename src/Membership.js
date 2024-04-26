@@ -3,10 +3,13 @@ import StripeCheckout from "./components/StripeCheckout";
 import backgroundImage2 from './images/IMG_8105.jpeg';
 import './Membership.css';  // Assume we create this CSS file
 import Modal from "./components/SignUpModal";
-
+import { useAuth } from "./AuthContext";
 
 const Membership = () => {
     console.log('Membership component mounted')
+
+    const { currentUser } = useAuth();
+
     const [isModalOpen, setIsModalOpen] = useState(true);
     const closeModal = () => {
         console.log('Modal is being closed');
@@ -18,7 +21,7 @@ const Membership = () => {
             console.log('Modal state changed to closed');
             // Perform any cleanup or additional actions necessary when modal closes
         }
-    }, [isModalOpen]);
+    }, [isModalOpen, currentUser]);
 
 
     return (
@@ -29,7 +32,8 @@ const Membership = () => {
                     <img src={backgroundImage2} alt="Background" className="background-image" />
                 </div>
                 <div id="checkout" className="" style={{ width: '100%', display: 'flex', alignItems: 'center' }}>
-                    <StripeCheckout />
+                    {/* Only mount StripeCheckout if there is a current user */}
+                    {currentUser && <StripeCheckout />}
                 </div>
             </main>
         </div>
