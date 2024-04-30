@@ -11,7 +11,7 @@ function StripeCheckout() {
             if (currentUser && currentUser.uid) {
                 console.log('Setting up stripe with userId:', currentUser.uid);
                 try {
-                    const stripeCheckoutInstance = await initializeStripe(currentUser.uid);
+                    const stripeCheckoutInstance = await initializeStripe(currentUser.uid, currentUser.email);
                     stripeCheckoutInstanceRef.current = stripeCheckoutInstance;
                     stripeCheckoutInstance.mount('#checkout');
                     console.log('Stripe mounted');
