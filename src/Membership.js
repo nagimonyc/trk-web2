@@ -84,7 +84,7 @@ const Membership = () => {
                                     <input
                                         type="text"
                                         placeholder="First name"
-                                        style={{ marginRight: 10 }}
+                                        style={{ marginRight: 10, width: 100 }}
                                         value={firstName}
                                         onChange={(e) => setFirstName(e.target.value)}
                                     >
@@ -93,7 +93,7 @@ const Membership = () => {
                                     <input
                                         type="text"
                                         placeholder="Last name"
-                                        style={{ marginRight: 10 }}
+                                        style={{ marginRight: 10, width: 100 }}
                                         value={lastName}
                                         onChange={(e) => setLastName(e.target.value)}
                                     >
