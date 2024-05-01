@@ -53,4 +53,24 @@ const addUserToFirestore = (user, additionalDetails) => {
     });
 };
 
-export { app, auth, db, registerUser, signInUser, resetPassword, signInWithGoogle, logOut, addUserToFirestore };
+const getUser = async (userId) => {
+    const userRef = doc(db, "users", userId);
+    const docSnapshot = await getDoc(userRef);
+    if (docSnapshot.exists()) {
+        return docSnapshot.data();
+    } else {
+        return null;
+    }
+}
+
+const setFirstandLastName = async (userId, firstName, lastName) => {
+    const userRef = doc(db, "users", userId);
+    const docSnapshot = await getDoc(userRef);
+    if (docSnapshot.exists()) {
+        await setDoc(userRef, {
+            firstName: firstName,
+            lastName: lastName,
+        }, { merge: true });
+    }
+}
+export { app, auth, db, registerUser, signInUser, resetPassword, signInWithGoogle, logOut, addUserToFirestore, getUser, setFirstandLastName };
