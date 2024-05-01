@@ -34,6 +34,17 @@ const Modal = ({ isOpen, onClose, children }) => {
         }
     };
 
+    const handleSignIn = async () => {
+        try {
+            const userCredential = await signInUser(email, password);
+            console.log('User signed in:', userCredential.user);
+            onClose(); // Close the modal upon successful sign-in
+        } catch (error) {
+            console.error('Error signing in:', error.message);
+        }
+    }
+
+
     const handleGoogleSignInSuccess = async (user, token) => {
         console.log('Signed in as:', user);
 
@@ -72,13 +83,75 @@ const Modal = ({ isOpen, onClose, children }) => {
                 <p style={{ marginTop: 3, marginBottom: 8.5, fontSize: 24, fontWeight: '600' }}>Welcome to Nagimo</p>
                 <p style={{ marginTop: 2.5, marginBottom: 25, fontSize: 14 }}>Please sign in or sign up below.</p>
                 <div>
-                    <input type="text" placeholder="you@email.com" style={{ width: '100%', height: 35, borderRadius: 7.5, borderColor: '#3E3F42', marginBottom: 10, borderWidth: '1px', borderStyle: 'solid' }} value={email} onChange={(e) => setEmail(e.target.value)} />
-                    <input type="password" placeholder="Password" style={{ width: '100%', height: 35, borderRadius: 7.5, borderColor: '#3E3F42', marginBottom: 10, borderWidth: '1px', borderStyle: 'solid' }} value={password} onChange={(e) => setPassword(e.target.value)} />
-                    <button style={{ width: '100%', height: 35, borderRadius: 7.5, borderColor: 'transparent', backgroundColor: '#3E3F42', color: 'white', fontWeight: '700', fontSize: 16, display: 'flex', alignItems: 'center', justifyContent: 'center' }} onClick={handleSignUp}>Sign Up</button>
-                    <div style={{ borderTop: '1px solid #ccc', marginTop: 10, marginBottom: 10 }}></div>
+                    <div style={{ flexDirection: 'column', display: 'flex' }}>
+                        <input
+                            type="text"
+                            placeholder="you@email.com"
+                            style={{
+                                height: 35,
+                                borderRadius: 7.5,
+                                borderColor: '#C3C3C3',
+                                marginBottom: 10,
+                                borderWidth: '1px',
+                                borderStyle: 'solid',
+                                padding: '0 10px',
+                                color: '#000', // Text color
+                                fontSize: 14, // Adjust font size as needed
+                                // Placeholder styles
+                                '::placeholder': {
+                                    color: '#c4c4c4',
+                                    fontSize: 14, // Adjust the font size of the placeholder text
+                                }
+                            }}
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            style={{
+
+                                height: 35,
+                                borderRadius: 7.5,
+                                borderColor: '#C3C3C3',
+                                marginBottom: 10,
+                                borderWidth: '1px',
+                                borderStyle: 'solid',
+                                padding: '0 10px',
+                                color: '#000', // Text color
+                                fontSize: 14, // Adjust font size as needed
+                                boxSizing: 'border-box' // Ensures padding is included in the width
+                            }}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </div>
+                    <div style={{ display: 'flex' }}>
+                        <button style={{ marginRight: 5, width: '100%', height: 35, borderRadius: 7.5, borderWidth: '1px', borderColor: '#C3C3C3', backgroundColor: 'transparent', color: 'black', fontWeight: '600', fontSize: 15, display: 'flex', alignItems: 'center', justifyContent: 'center', borderStyle: 'solid' }}
+                            onClick={handleSignIn}
+                            onMouseDown={(e) => e.target.style.transform = 'scale(0.95)'} // Scales down when mouse is down
+                            onMouseUp={(e) => e.target.style.transform = 'scale(1)'} // Scales back when mouse is released
+                            onTouchStart={(e) => e.target.style.transform = 'scale(0.95)'} // Also handles touch screens
+                            onTouchEnd={(e) => e.target.style.transform = 'scale(1)'} // Reset on touch end
+                        >Log In</button>
+                        <button style={{ marginLeft: 5, width: '100%', height: 35, borderRadius: 7.5, borderColor: 'transparent', backgroundColor: '#ff8100', color: 'white', fontWeight: '600', fontSize: 15, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                            onClick={handleSignUp}
+                            onMouseDown={(e) => e.target.style.transform = 'scale(0.95)'} // Scales down when mouse is down
+                            onMouseUp={(e) => e.target.style.transform = 'scale(1)'} // Scales back when mouse is released
+                            onTouchStart={(e) => e.target.style.transform = 'scale(0.95)'} // Also handles touch screens
+                            onTouchEnd={(e) => e.target.style.transform = 'scale(1)'} // Reset on touch end
+                        >Sign Up</button>
+                    </div>
+                    {/* <div style={{ borderTop: '1px solid #ccc', marginTop: 10, marginBottom: 10 }}></div> */}
+                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '100%', marginTop: 5, marginBottom: 5 }}>
+                        <div style={{ flex: 1, height: 1, backgroundColor: '#ccc', marginTop: 10, marginBottom: 10 }}></div>
+                        <p style={{ margin: 0, padding: '0 10px', fontSize: 14, color: '#7B7B7B' }}>or</p>
+                        <div style={{ flex: 1, height: 1, backgroundColor: '#ccc', marginTop: 10, marginBottom: 10 }}></div>
+                    </div>
                     <GoogleSignInButton
                         onSuccess={handleGoogleSignInSuccess}
                         onError={handleGoogleSignInError}
+
                     />
                 </div>
             </div>
