@@ -70,7 +70,7 @@ const Membership = () => {
                 </div>
                 <div id="checkout" className="" style={{ width: '100%', display: 'flex', alignItems: 'center' }}>
                     {/* Only mount StripeCheckout if there is a current user */}
-                    {!currentUser && !membershipStatus && <StripeCheckout />}
+                    {!membershipStatus && <StripeCheckout />}
                     {currentUser && membershipStatus &&
                         <div style={{ display: 'flex', flex: 1, height: 450, flexDirection: 'column' }}>
                             <div style={{ marginTop: 15, marginLeft: 25 }}>
