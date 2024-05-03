@@ -3,7 +3,7 @@ import { signInUser, registerUser, signInWithGoogle, addUserToFirestore, db } fr
 import GoogleSignInButton from "./GoogleSignInButton";
 import doorLogo from '../images/Group-3.png';
 import { useAuth } from '../AuthContext';
-import { getFirestore, doc, setDoc, getDoc, collection } from "firebase/firestore"; // include getDoc and collection
+import { getFirestore, doc, setDoc, getDoc, collection, connectFirestoreEmulator } from "firebase/firestore"; // include getDoc and collection
 
 
 const Modal = ({ isOpen, onClose, children }) => {
@@ -18,12 +18,15 @@ const Modal = ({ isOpen, onClose, children }) => {
             const userCredential = await registerUser(email, password);
             console.log('User signed up:', userCredential.user);
             if (userCredential.user) {
+                console.log('userCred: ', userCredential.user.uid);
                 updateUserDocument(userCredential.user.uid, {
                     role: 'climber', // Adjust details as needed
                     origin: 'web', // Adjust details as needed
                     timestamp: new Date(),
                     username: email.split('@')[0],
                     isNewUser: true,
+                    uid: userCredential.user.uid,
+                    email: email,
                 });
             }
 
