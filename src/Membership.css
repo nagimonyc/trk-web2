@@ -64,12 +64,14 @@
 }
 
 .loading {
+    font-size: 24px;
+    flex: 1;
+    margin-top: 16px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    height: 100vh;
+    text-align: center;
     animation: fadeInAnimation ease 1s;
+    height: 100%;
 }
 
 @keyframes fadeInAnimation {
@@ -80,4 +82,24 @@
     100% {
         opacity: 1;
     }
+}
+
+.logged-in-button {
+    position: fixed;
+    /* Fixed positioning to keep it at the top right regardless of scrolling */
+    top: 10px;
+    /* 10px from the top */
+    right: 10px;
+    /* 10px from the right */
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    /* Green background */
+    color: white;
+    /* White text */
+    border: none;
+    border-radius: 50px;
+    /* Fully rounded corners for pill shape */
+    cursor: pointer;
+    z-index: 1000;
+    /* Ensures it stays on top of other content */
 }

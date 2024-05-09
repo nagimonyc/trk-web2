@@ -32,9 +32,9 @@ function StripeCheckout() {
         };
     }, [currentUser?.uid]); // Depend on currentUser.uid to re-run the effect
 
-    if (!currentUser?.uid) {
-        return <div>Please sign in to proceed with payment.</div>;
-    }
+    // if (!currentUser?.uid) {
+    //     return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flex: 1 }}></div>;
+    // }
 
     return null; // Or render something related to the checkout process
 }

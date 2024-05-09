@@ -81,7 +81,7 @@ const Modal = ({ isOpen, onClose, children }) => {
 
     return (
         <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0, 0, 0, 0.75)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2 }}>
-            <div style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)', padding: 20, width: 350, height: 'auto', borderRadius: 20 }}>
+            <div style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)', padding: 20, width: 310, height: 'auto', borderRadius: 20 }}>
                 <img src={doorLogo} alt="Entry Logo" style={{ height: 50, width: 50 }} />
                 <p style={{ marginTop: 3, marginBottom: 8.5, fontSize: 24, fontWeight: '600' }}>Welcome to Nagimo</p>
                 <p style={{ marginTop: 2.5, marginBottom: 25, fontSize: 14 }}>Please sign in or sign up below.</p>
