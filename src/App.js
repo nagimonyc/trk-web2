@@ -6,7 +6,7 @@ import { AuthProvider } from './AuthContext';
 
 
 function App() {
-  console.log('App component mounted');
+  // console.log('App component mounted');
   return (
     <AuthProvider>
       <Router>

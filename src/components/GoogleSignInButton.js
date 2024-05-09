@@ -11,18 +11,13 @@ const GoogleSignInButton = ({ onSuccess, onError }) => {
 
         try {
             const result = await signInWithPopup(auth, provider);
-            console.log('Google Sign-In result:', result);
             // This gives you a Google Access Token. You can use it to access Google APIs.
             const credential = GoogleAuthProvider.credentialFromResult(result);
-            console.log('Google Sign-In credential:', credential);
             const token = credential.accessToken;
-            console.log('Google Sign-In token:', token);
             // The signed-in user info.
             const user = result.user;
-            console.log('Google Sign-In user:', user);
             // Call the onSuccess callback if it exists.
             if (onSuccess) {
-                console.log('Signed in as:', user);
                 onSuccess(user, token);
             }
         } catch (error) {

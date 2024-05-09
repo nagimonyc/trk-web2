@@ -29,21 +29,18 @@ export const AuthProvider = ({ children }) => {
 
     const updateUserDocument = async (userId, data) => {
         const userRef = doc(db, "users", userId);
-        console.log("updating user document with id: ", userId, " and data: ", data);
-        console.log("userRef is: ", userRef.path);
         const docSnap = await getDoc(userRef);
 
         if (docSnap.exists()) {
             try {
                 await updateDoc(userRef, data);
-                console.log("Document successfully updated!");
+                // console.log("Document successfully updated!");
             } catch (error) {
                 console.error("Error updating document: ", error);
             }
         } else {
             try {
                 await setDoc(userRef, data, { merge: true });
-                console.log("Document successfully created with update data!");
             } catch (error) {
                 console.error("Error creating document: ", error);
             }
