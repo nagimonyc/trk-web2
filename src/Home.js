@@ -4,7 +4,7 @@ import backgroundImage1 from './images/Desktop-Stripe-integration-2.png';
 import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
-    console.log('Home component mounted')
+    // console.log('Home component mounted')
     const [backgroundImage, setBackgroundImage] = React.useState(window.innerWidth > 768 ? backgroundImage1 : backgroundImage2);
     const navigate = useNavigate();
 

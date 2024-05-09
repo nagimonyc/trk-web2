@@ -12,7 +12,7 @@ import { getFirestore, doc, setDoc, getDoc, collection } from "firebase/firestor
 
 const firebaseConfig = {
     apiKey: "AIzaSyA2IY2lRkSTLCJU-P5DlA38gjrL--cTcuk",
-    authDomain: "trk-app-505a1.firebaseapp.com",
+    authDomain: "nagimo.org",
     projectId: "trk-app-505a1",
     storageBucket: "trk-app-505a1.appspot.com",
     messagingSenderId: "786555738802",

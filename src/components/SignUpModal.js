@@ -16,9 +16,7 @@ const Modal = ({ isOpen, onClose, children }) => {
     const handleSignUp = async () => {
         try {
             const userCredential = await registerUser(email, password);
-            console.log('User signed up:', userCredential.user);
             if (userCredential.user) {
-                console.log('userCred: ', userCredential.user.uid);
                 updateUserDocument(userCredential.user.uid, {
                     role: 'climber', // Adjust details as needed
                     origin: 'web', // Adjust details as needed
@@ -29,8 +27,6 @@ const Modal = ({ isOpen, onClose, children }) => {
                     email: email,
                 });
             }
-
-            console.log('User added to Firestore');
             onClose(); // Close the modal upon successful sign-up
         } catch (error) {
             console.error('Error signing up:', error.message);
@@ -40,7 +36,6 @@ const Modal = ({ isOpen, onClose, children }) => {
     const handleSignIn = async () => {
         try {
             const userCredential = await signInUser(email, password);
-            console.log('User signed in:', userCredential.user);
             onClose(); // Close the modal upon successful sign-in
         } catch (error) {
             console.error('Error signing in:', error.message);
@@ -49,7 +44,6 @@ const Modal = ({ isOpen, onClose, children }) => {
 
 
     const handleGoogleSignInSuccess = async (user, token) => {
-        console.log('Signed in as:', user);
 
         const userRef = doc(db, "users", user.uid); // Use the correct method to get a document reference
         const docSnapshot = await getDoc(userRef);
@@ -62,9 +56,7 @@ const Modal = ({ isOpen, onClose, children }) => {
                 username: user.email.split('@')[0],
                 isNewUser: true,
             });
-            console.log('New Google user added to Firestore');
         }
-        console.log('Closing modal now');
         onClose(); // Close the modal upon successful check or addition
     };
 
