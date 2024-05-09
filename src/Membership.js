@@ -27,6 +27,7 @@ const Membership = () => {
         }
     }, []);
 
+
     // Listen to userData changes and update local state
     useEffect(() => {
         if (userData.firstName && userData.lastName) {
@@ -39,12 +40,9 @@ const Membership = () => {
         if (currentUser) {
             updateUserDocument(currentUser.uid, { firstName, lastName }).then(() => {
                 console.log("Name updated successfully!");
+
             });
         }
-    };
-
-    const handleBlur = () => {
-        window.scrollTo(0, 0);  // Scrolls to the top of the page
     };
 
 
@@ -65,6 +63,17 @@ const Membership = () => {
         } else {
             console.log('Please visit this page on a mobile device to download the app');
         }
+    };
+
+    const handleInputBlur = () => {
+        const viewport = document.querySelector('meta[name="viewport"]');
+        viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
+        window.scrollTo(0, 0);  // Optionally reset the scroll position
+    };
+
+    const handleInputFocus = () => {
+        const viewport = document.querySelector('meta[name="viewport"]');
+        viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0');
     };
 
     return (
@@ -92,8 +101,8 @@ const Membership = () => {
                                 <p style={{ fontSize: 20 }}>{userData.isMember ? '✅' : '➡️'} : Complete payment</p>
                                 <p style={{ fontSize: 20 }}>{userData.firstName ? '✅' : '➡️'} : Submit first and last name</p>
                                 <div style={{ marginTop: 20, flex: 1, display: 'flex' }}>
-                                    <input type="text" placeholder="First name" style={{ marginRight: 10, width: 100 }} value={firstName} onChange={(e) => setFirstName(e.target.value)} onBlur={handleBlur} />
-                                    <input type="text" placeholder="Last name" style={{ marginRight: 10, width: 100 }} value={lastName} onChange={(e) => setLastName(e.target.value)} onBlur={handleBlur} />
+                                    <input type="text" placeholder="First name" style={{ marginRight: 10, width: 100, fontSize: 16 }} value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+                                    <input type="text" placeholder="Last name" style={{ marginRight: 10, width: 100, fontSize: 16 }} value={lastName} onChange={(e) => setLastName(e.target.value)} />
                                     <button onClick={handleNameSubmit} style={{}}>SUBMIT</button>
                                 </div>
                                 <p style={{ fontSize: 20, marginTop: 20 }}>{userData.firstName && userData.lastName && userData.image ? '✅' : '➡️'} : Get app, sign in, and upload selfie</p>
