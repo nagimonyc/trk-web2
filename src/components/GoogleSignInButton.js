@@ -38,7 +38,7 @@ const GoogleSignInButton = ({ onSuccess, onError }) => {
 
     return (
         <button style={{
-            width: '100%', height: 59, borderRadius: 7.5, borderColor: 'transparent', backgroundColor: 'white', color: 'black', fontWeight: '600', fontSize: 15, justifyContent: 'center', display: 'flex', alignItems: 'center', borderWidth: 1, borderColor: 'black', color: 'black', borderStyle: 'solid'
+            width: '100%', height: 59, borderRadius: 7.5, borderColor: 'transparent', backgroundColor: 'white', color: 'black', fontWeight: '600', fontSize: 15, justifyContent: 'center', display: 'flex', alignItems: 'center', borderWidth: 1, borderColor: 'black', color: 'black', borderStyle: 'solid', cursor: 'pointer'
         }} onClick={(e) => { e.preventDefault(); signInWithGoogle(); }}
             onMouseDown={(e) => e.target.style.transform = 'scale(0.95)'} // Scales down when mouse is down
             onMouseUp={(e) => e.target.style.transform = 'scale(1)'} // Scales back when mouse is released
