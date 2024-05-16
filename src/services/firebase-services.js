@@ -8,7 +8,7 @@ import {
     signInWithPopup,
     signOut,
 } from "firebase/auth";
-import { getFirestore, doc, setDoc, getDoc, collection } from "firebase/firestore"; // include getDoc and collection
+import { getFirestore, doc, setDoc, getDoc, collection, where, getDocs, query } from "firebase/firestore"; // include getDoc and collection
 
 const firebaseConfig = {
     apiKey: "AIzaSyA2IY2lRkSTLCJU-P5DlA38gjrL--cTcuk",
@@ -73,4 +73,12 @@ const setFirstandLastName = async (userId, firstName, lastName) => {
         }, { merge: true });
     }
 }
-export { app, auth, db, registerUser, signInUser, resetPassword, signInWithGoogle, logOut, addUserToFirestore, getUser, setFirstandLastName };
+
+const countUsersWithStripeCustomerId = async () => {
+    const usersRef = collection(db, "users");
+    const q = query(usersRef, where("stripeCustomerId", "!=", null));
+    const querySnapshot = await getDocs(q);
+    return querySnapshot.size;
+};
+
+export { app, auth, db, registerUser, signInUser, resetPassword, signInWithGoogle, logOut, addUserToFirestore, getUser, setFirstandLastName, countUsersWithStripeCustomerId };

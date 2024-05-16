@@ -122,14 +122,15 @@ const Modal = ({ isOpen, onClose, children }) => {
                         />
                     </div>
                     <div style={{ display: 'flex' }}>
-                        <button style={{ marginRight: 5, width: '100%', height: 35, borderRadius: 7.5, borderWidth: '1px', borderColor: '#C3C3C3', backgroundColor: 'transparent', color: 'black', fontWeight: '600', fontSize: 15, display: 'flex', alignItems: 'center', justifyContent: 'center', borderStyle: 'solid' }}
+                        <button style={{ marginRight: 5, width: '100%', height: 35, borderRadius: 7.5, borderWidth: '1px', borderColor: '#C3C3C3', backgroundColor: 'transparent', color: 'black', fontWeight: '600', fontSize: 15, display: 'flex', alignItems: 'center', justifyContent: 'center', borderStyle: 'solid', cursor: 'pointer' }}
                             onClick={handleSignIn}
                             onMouseDown={(e) => e.target.style.transform = 'scale(0.95)'} // Scales down when mouse is down
                             onMouseUp={(e) => e.target.style.transform = 'scale(1)'} // Scales back when mouse is released
                             onTouchStart={(e) => e.target.style.transform = 'scale(0.95)'} // Also handles touch screens
                             onTouchEnd={(e) => e.target.style.transform = 'scale(1)'} // Reset on touch end
+
                         >Log In</button>
-                        <button style={{ marginLeft: 5, width: '100%', height: 35, borderRadius: 7.5, borderColor: 'transparent', backgroundColor: '#ff8100', color: 'white', fontWeight: '600', fontSize: 15, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                        <button style={{ marginLeft: 5, width: '100%', height: 35, borderRadius: 7.5, borderColor: 'transparent', backgroundColor: '#ff8100', color: 'white', fontWeight: '600', fontSize: 15, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
                             onClick={handleSignUp}
                             onMouseDown={(e) => e.target.style.transform = 'scale(0.95)'} // Scales down when mouse is down
                             onMouseUp={(e) => e.target.style.transform = 'scale(1)'} // Scales back when mouse is released

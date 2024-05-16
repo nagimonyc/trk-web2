@@ -6,17 +6,29 @@ import Modal from "./components/SignUpModal";
 import { useAuth } from "./AuthContext";
 import appleDownloadImg from './images/AppleDL-SVG.svg'; // Import the Apple download image
 import googleDownloadImg from './images/google-play-badge.png'; // Import the Google Play image
-import { getUser, setFirstandLastName, getFirstandLastName } from "./services/firebase-services";
+import { countUsersWithStripeCustomerId } from "./services/firebase-services";
 
 const Membership = () => {
-    // console.log('Membership component mounted')
     const [isModalOpen, setIsModalOpen] = useState(true);
     const { currentUser, userData, updateUserDocument } = useAuth();
     const [firstName, setFirstName] = useState(userData.firstName || '');
     const [lastName, setLastName] = useState(userData.lastName || '');
     const [isLoading, setIsLoading] = useState(false);
     const [deviceType, setDeviceType] = useState(null);
+    const [stripeCustomerCount, setStripeCustomerCount] = useState(0);
 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const count = await countUsersWithStripeCustomerId();
+                setStripeCustomerCount(count);
+            } catch (error) {
+                console.error('Error fetching stripe customer count:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
 
     useEffect(() => {
         const userAgent = navigator.userAgent || navigator.vendor || window.opera;
@@ -27,8 +39,6 @@ const Membership = () => {
         }
     }, []);
 
-
-    // Listen to userData changes and update local state
     useEffect(() => {
         if (userData.firstName && userData.lastName) {
             setFirstName(userData.firstName);
@@ -40,11 +50,9 @@ const Membership = () => {
         if (currentUser) {
             updateUserDocument(currentUser.uid, { firstName, lastName }).then(() => {
                 console.log("Name updated successfully!");
-
             });
         }
     };
-
 
     useEffect(() => {
         if (userData.isMember) {
@@ -80,9 +88,14 @@ const Membership = () => {
         <div className="membership-container">
             {!currentUser && <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />}
             {currentUser && (
-                <button className="logged-in-button">
-                    Logged In
-                </button>
+                <div>
+                    <button className="logged-in-button">
+                        Logged In
+                    </button>
+                    <button className="passes-left-button">
+                        <span style={{ fontWeight: 600 }}>{37 - stripeCustomerCount}</span>/30 passes left
+                    </button>
+                </div>
             )}
             <main className="main-content">
                 <div className="background-container">
@@ -122,21 +135,6 @@ const Membership = () => {
                                         <img src={appleDownloadImg} alt="Download on App Store" onClick={handleAppDownload} style={{ cursor: 'pointer', width: '125px', height: 'auto' }} />
                                     )}
                                 </div>
-                                {/* {userData.isMember && userData.firstName && userData.lastName && userData.image && (
-                                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', alignItems: 'center', flexDirection: 'column' }}>
-                                        <p style={{ fontSize: 20, fontWeight: 600, }}>🌸🌺🌸🌺🌸🌺🌸🌺🌸🌺</p>
-                                        <div style={{ display: 'flex', flex: 1, flexDirection: 'row' }}>
-                                            <p>Cancel process WIP</p>
-                                            <button
-                                                onClick={() => { }}
-                                                onMouseDown={(e) => e.target.style.transform = 'scale(0.95)'} // Scales down when mouse is down
-                                                onMouseUp={(e) => e.target.style.transform = 'scale(1)'} // Scales back when mouse is released
-                                                onTouchStart={(e) => e.target.style.transform = 'scale(0.95)'} // Also handles touch screens
-                                                onTouchEnd={(e) => e.target.style.transform = 'scale(1)'} // Reset on touch end
-                                            >cancel</button>
-                                        </div>
-                                    </div>
-                                )} */}
                             </div>
                         </div>
                     }
