@@ -7,6 +7,7 @@ import { useAuth } from "./AuthContext";
 import appleDownloadImg from './images/AppleDL-SVG.svg'; // Import the Apple download image
 import googleDownloadImg from './images/google-play-badge.png'; // Import the Google Play image
 import { countUsersWithStripeCustomerId } from "./services/firebase-services";
+import QRDownload from './images/QR-DL.png';
 
 const Membership = () => {
     const [isModalOpen, setIsModalOpen] = useState(true);
@@ -73,15 +74,7 @@ const Membership = () => {
         }
     };
 
-    const handleInputBlur = () => {
-        const viewport = document.querySelector('meta[name="viewport"]');
-        viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
-        window.scrollTo(0, 0);  // Optionally reset the scroll position
-    };
-
-    const handleInputFocus = () => {
-        const viewport = document.querySelector('meta[name="viewport"]');
-        viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0');
+    const openQRModal = () => {
     };
 
     return (
@@ -105,7 +98,7 @@ const Membership = () => {
                     {!userData.isMember && <StripeCheckout />}
                     {isLoading && <div className="loading" style={{ width: '100%', display: 'flex', alignItems: 'center' }}>Loading...</div>}
                     {currentUser && userData.isMember && !isLoading &&
-                        <div className="welcome-steps fade-in" style={{ display: 'flex', flex: 1, height: 450, flexDirection: 'column' }}>
+                        <div className="welcome-steps fade-in" style={{ display: 'flex', flex: 1, height: 500, flexDirection: 'column' }}>
                             <div style={{ marginTop: 15, marginLeft: 25 }}>
                                 <p style={{ fontSize: 32, marginBottom: 10 }}>Welcome to Nagimo 🌺</p>
                                 <p style={{ margin: 0 }}>To activate membership, see below:</p>
@@ -125,7 +118,7 @@ const Membership = () => {
                                         justifyContent: 'left',
                                         alignItems: 'center',
                                         flexDirection: 'row',
-                                        width: '100%'
+                                        width: '100%',
                                     }}
                                 >
                                     {deviceType === 'Android' && (
@@ -133,6 +126,13 @@ const Membership = () => {
                                     )}
                                     {deviceType === 'iOS' && (
                                         <img src={appleDownloadImg} alt="Download on App Store" onClick={handleAppDownload} style={{ cursor: 'pointer', width: '125px', height: 'auto' }} />
+                                    )}
+                                    {deviceType !== 'Android' && deviceType !== 'iOS' && (
+                                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                                            <img src={QRDownload} alt="Download via QR" style={{ cursor: 'pointer', width: '150px', height: 'auto', marginBottom: 10 }} />
+                                            <p style={{ color: 'black', fontStyle: 'initial', fontSize: 12 }}>Scan QR to download app</p>
+                                        </div>
+
                                     )}
                                 </div>
                             </div>
