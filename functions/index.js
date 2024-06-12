@@ -15,8 +15,9 @@ exports.handleStripeWebhook = functions.https.onRequest(async (req, res) => {
             console.log("Received event", event.type);
 
             if (['payment_intent.succeeded', 'checkout.session.completed'].includes(event.type)) {
-                const paymentIntent = event.data.object;
-                const userId = paymentIntent.metadata.userId;  // Extract user ID from metadata
+                const session = event.data.object;
+                const userId = session.metadata.userId;  // Extract user ID from metadata
+                const phoneNumber = session.customer_details.phone; // Extract phone number
                 console.log("Handling payment for user:", userId);
 
                 if (!userId) {
@@ -34,11 +35,15 @@ exports.handleStripeWebhook = functions.https.onRequest(async (req, res) => {
 
                 // Update Firestore record within a transaction
                 await admin.firestore().runTransaction(async (transaction) => {
-                    transaction.update(userRef, { isMember: true });
-                    console.log("Updated user membership status to true for user:", userId);
+                    const userData = { isMember: true };
+                    if (phoneNumber) {
+                        userData.phone = phoneNumber;
+                    }
+                    transaction.update(userRef, userData);
+                    console.log("Updated user membership status and phone number for user:", userId);
                 });
 
-                res.status(200).send("Membership status updated successfully");
+                res.status(200).send("Membership status and phone number updated successfully");
             } else {
                 console.log("Event type not handled:", event.type);
                 res.status(200).send("Event type not handled");

@@ -1,5 +1,5 @@
 import React from 'react';
-import backgroundImage2 from './images/IMG_8105.jpeg';
+import backgroundImage2 from './images/IMG_6832.jpeg';
 import backgroundImage1 from './images/Desktop-Stripe-integration-2.png';
 import { useNavigate } from 'react-router-dom';
 

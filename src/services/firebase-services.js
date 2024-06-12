@@ -76,7 +76,7 @@ const setFirstandLastName = async (userId, firstName, lastName) => {
 
 const countUsersWithStripeCustomerId = async () => {
     const usersRef = collection(db, "users");
-    const q = query(usersRef, where("stripeCustomerId", "!=", null));
+    const q = query(usersRef, where("isMember", "!=", null));
     const querySnapshot = await getDocs(q);
     return querySnapshot.size;
 };
