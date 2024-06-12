@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import StripeCheckout from "./components/StripeCheckout";
-import backgroundImage2 from './images/IMG_8105.jpeg';
+import backgroundImage2 from './images/IMG_6832.jpeg';
 import './Membership.css';  // Assume we create this CSS file
 import Modal from "./components/SignUpModal";
 import { useAuth } from "./AuthContext";
