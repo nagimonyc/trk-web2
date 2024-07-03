@@ -18,8 +18,8 @@ const Modal = ({ isOpen, onClose, children }) => {
             const userCredential = await registerUser(email, password);
             if (userCredential.user) {
                 updateUserDocument(userCredential.user.uid, {
-                    role: 'climber', // Adjust details as needed
-                    origin: 'web', // Adjust details as needed
+                    role: 'climber',
+                    origin: 'web',
                     timestamp: new Date(),
                     username: email.split('@')[0],
                     isNewUser: true,
@@ -63,9 +63,6 @@ const Modal = ({ isOpen, onClose, children }) => {
     // Adjust your GoogleSignInButton to handle the new signInWithGoogle function
 
 
-
-
-
     const handleGoogleSignInError = (errorCode, errorMessage, email, credential) => {
         console.error('Google Sign-In error:', errorMessage);
         // Handle the sign-in error
@@ -76,7 +73,7 @@ const Modal = ({ isOpen, onClose, children }) => {
             <div style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)', padding: 20, width: 310, height: 'auto', borderRadius: 20 }}>
                 <img src={doorLogo} alt="Entry Logo" style={{ height: 50, width: 50 }} />
                 <p style={{ marginTop: 3, marginBottom: 8.5, fontSize: 24, fontWeight: '600' }}>Welcome to Nagimo</p>
-                <p style={{ marginTop: 2.5, marginBottom: 25, fontSize: 14 }}>Please sign in or sign up below.</p>
+                <p style={{ marginTop: 2.5, marginBottom: 25, fontSize: 14 }}>Please log in or sign up below.</p>
                 <div>
                     <div style={{ flexDirection: 'column', display: 'flex' }}>
                         <input

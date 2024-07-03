@@ -94,7 +94,7 @@ const Membership = () => {
                         Logged In
                     </button>
                     <button className="passes-left-button">
-                        <span style={{ fontWeight: 600 }}>{37 - stripeCustomerCount}</span>/30 passes left
+                        <span style={{ fontWeight: 600 }}>{30 - stripeCustomerCount}</span>/30 passes left
                     </button>
                 </div>
             )}

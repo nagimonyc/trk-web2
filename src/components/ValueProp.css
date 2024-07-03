@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+
+.value-prop-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    /* Align items to the bottom */
+    width: 100%;
+    height: 50vh;
+    color: white;
+    text-align: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    background-image: url('../images/IMG_8474.jpeg');
+    /* Add the background image */
+    background-size: cover;
+    /* Ensure the image covers the entire container */
+    background-position: center;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Prevent the image from repeating */
+    position: relative;
+}
+
+.value-prop-title {
+    width: 90%;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 60px;
+    /* Default for larger screens */
+    margin: 0;
+    position: absolute;
+    bottom: 20px;
+    margin-bottom: 40px;
+    /* Adjust this value as needed */
+    background-color: rgba(255, 101, 1, .22),
+}
+
+.value-prop-caption {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    /* Default for larger screens */
+    max-width: 500px;
+    color: #3b4555;
+    /* Change this to white if you want white text */
+    /* color: white; */
+    margin-bottom: 60px;
+    /* Adjust this value as needed to avoid overlap with the title */
+}
+
+.value-prop-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #ff7e5f;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'DM Sans', sans-serif;
+    margin-bottom: 20px;
+    /* Adjust this value as needed to avoid overlap with the caption */
+}
+
+.value-prop-button:hover {
+    background-color: #feb47b;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    .value-prop-title {
+        font-size: 34px;
+        /* Adjust font size for mobile */
+        bottom: 10px;
+        /* Adjust this value as needed */
+        background-color: rgba(255, 101, 1, .22),
+    }
+
+    .value-prop-caption {
+        font-size: 18px;
+        /* Adjust font size for mobile */
+        margin-bottom: 30px;
+        /* Adjust this value as needed */
+    }
+
+    .value-prop-button {
+        margin-bottom: 10px;
+        /* Adjust this value as needed */
+    }
+}

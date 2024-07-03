@@ -1,0 +1,22 @@
+.home-container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background-color: #FCF7F3;
+    flex-direction: column;
+    align-items: center;
+}
+
+.home-content {
+    width: 70%;
+}
+
+@media (max-width: 768px) {
+    .home-content {
+        width: 90%;
+    }
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+}
