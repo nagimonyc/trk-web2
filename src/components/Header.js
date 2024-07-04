@@ -13,11 +13,11 @@ const Header = () => {
     return (
         <div className="header-container">
             <div className="header-desktop">
-                <div className="header-item">
+                <a className="header-item" href='https://nagimo.org/'>
                     <img src={nagimologo} alt="Nagimo Logo" style={{ height: '100%', width: 150, objectFit: 'contain' }} />
-                </div>
+                </a>
                 <div className="header-item">
-                    <button onClick={handleButtonClick} className='header-button'
+                    <button onClick={handleButtonClick} className='header-button' style={{ cursor: 'pointer' }}
                         onMouseDown={(e) => e.target.style.transform = 'scale(0.95)'} // Scales down when mouse is down
                         onMouseUp={(e) => e.target.style.transform = 'scale(1)'} // Scales back when mouse is released
                         onTouchStart={(e) => e.target.style.transform = 'scale(0.95)'} // Also handles touch screens

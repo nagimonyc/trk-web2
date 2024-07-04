@@ -60,9 +60,6 @@ const Modal = ({ isOpen, onClose, children }) => {
         onClose(); // Close the modal upon successful check or addition
     };
 
-    // Adjust your GoogleSignInButton to handle the new signInWithGoogle function
-
-
     const handleGoogleSignInError = (errorCode, errorMessage, email, credential) => {
         console.error('Google Sign-In error:', errorMessage);
         // Handle the sign-in error
@@ -87,13 +84,8 @@ const Modal = ({ isOpen, onClose, children }) => {
                                 borderWidth: '1px',
                                 borderStyle: 'solid',
                                 padding: '0 10px',
-                                color: '#000', // Text color
-                                fontSize: 14, // Adjust font size as needed
-                                // Placeholder styles
-                                '::placeholder': {
-                                    color: '#c4c4c4',
-                                    fontSize: 14, // Adjust the font size of the placeholder text
-                                }
+                                color: '#000',
+                                fontSize: 16, // Adjust font size to prevent zooming
                             }}
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
@@ -102,7 +94,6 @@ const Modal = ({ isOpen, onClose, children }) => {
                             type="password"
                             placeholder="Password"
                             style={{
-
                                 height: 35,
                                 borderRadius: 7.5,
                                 borderColor: '#C3C3C3',
@@ -110,16 +101,16 @@ const Modal = ({ isOpen, onClose, children }) => {
                                 borderWidth: '1px',
                                 borderStyle: 'solid',
                                 padding: '0 10px',
-                                color: '#000', // Text color
-                                fontSize: 14, // Adjust font size as needed
-                                boxSizing: 'border-box' // Ensures padding is included in the width
+                                color: '#000',
+                                fontSize: 16, // Adjust font size to prevent zooming
+                                boxSizing: 'border-box'
                             }}
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
                     </div>
                     <div style={{ display: 'flex' }}>
-                        <button style={{ marginRight: 5, width: '100%', height: 35, borderRadius: 7.5, borderWidth: '1px', borderColor: '#C3C3C3', backgroundColor: 'transparent', color: 'black', fontWeight: '600', fontSize: 15, display: 'flex', alignItems: 'center', justifyContent: 'center', borderStyle: 'solid', cursor: 'pointer' }}
+                        <button style={{ marginRight: 5, width: '100%', height: 35, borderRadius: 7.5, borderWidth: '1px', borderColor: '#C3C3C3', backgroundColor: 'transparent', color: 'black', fontWeight: '600', fontSize: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', borderStyle: 'solid', cursor: 'pointer' }}
                             onClick={handleSignIn}
                             onMouseDown={(e) => e.target.style.transform = 'scale(0.95)'} // Scales down when mouse is down
                             onMouseUp={(e) => e.target.style.transform = 'scale(1)'} // Scales back when mouse is released
@@ -127,7 +118,7 @@ const Modal = ({ isOpen, onClose, children }) => {
                             onTouchEnd={(e) => e.target.style.transform = 'scale(1)'} // Reset on touch end
 
                         >Log In</button>
-                        <button style={{ marginLeft: 5, width: '100%', height: 35, borderRadius: 7.5, borderColor: 'transparent', backgroundColor: '#ff8100', color: 'white', fontWeight: '600', fontSize: 15, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+                        <button style={{ marginLeft: 5, width: '100%', height: 35, borderRadius: 7.5, borderColor: 'transparent', backgroundColor: '#ff8100', color: 'white', fontWeight: '600', fontSize: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
                             onClick={handleSignUp}
                             onMouseDown={(e) => e.target.style.transform = 'scale(0.95)'} // Scales down when mouse is down
                             onMouseUp={(e) => e.target.style.transform = 'scale(1)'} // Scales back when mouse is released
@@ -135,7 +126,6 @@ const Modal = ({ isOpen, onClose, children }) => {
                             onTouchEnd={(e) => e.target.style.transform = 'scale(1)'} // Reset on touch end
                         >Sign Up</button>
                     </div>
-                    {/* <div style={{ borderTop: '1px solid #ccc', marginTop: 10, marginBottom: 10 }}></div> */}
                     <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '100%', marginTop: 5, marginBottom: 5 }}>
                         <div style={{ flex: 1, height: 1, backgroundColor: '#ccc', marginTop: 10, marginBottom: 10 }}></div>
                         <p style={{ margin: 0, padding: '0 10px', fontSize: 14, color: '#7B7B7B' }}>or</p>

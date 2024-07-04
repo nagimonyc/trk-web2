@@ -21,7 +21,7 @@ const Subscription = () => {
                 <div style={{ paddingLeft: 20, paddingRight: 20 }}>
                     {/* Save money */}
                     <div >
-                        <p className="save-pill">Save $360 per year</p>
+                        <p className="save-pill">Save $2,460 per year*</p>
                     </div>
                     <div style={{ paddingTop: 5 }}>
                         <p style={{ fontSize: '56px', fontWeight: '700', color: '#ff6633', marginBottom: 0 }}>$169.99
@@ -32,7 +32,7 @@ const Subscription = () => {
                         <h3 style={{ marginTop: 0 }}>Unlimited Check-ins</h3>
                     </div>
                     <div style={{}}>
-                        <button onClick={handleButtonClick} style={{ borderRadius: '8px', border: '2px solid #ff6633', width: '100%', paddingLeft: 15, paddingRight: 15, backgroundColor: '#ff6633', height: 50 }}
+                        <button onClick={handleButtonClick} style={{ borderRadius: '8px', border: '2px solid #ff6633', width: '100%', paddingLeft: 15, paddingRight: 15, backgroundColor: '#ff6633', height: 50, cursor: 'pointer' }}
                             onMouseDown={(e) => e.target.style.transform = 'scale(0.95)'} // Scales down when mouse is down
                             onMouseUp={(e) => e.target.style.transform = 'scale(1)'} // Scales back when mouse is released
                             onTouchStart={(e) => e.target.style.transform = 'scale(0.95)'} // Also handles touch screens
@@ -87,10 +87,11 @@ const Subscription = () => {
                     <div style={{ borderBottom: '1px solid #e7eaee' }}></div>
                     <div>
                         <ul style={{ paddingLeft: 20 }}>
-                            <li>Cancel anytime. refunded for remaining days</li>
+                            <li style={{ marginBottom: 16 }}>Cancel anytime. Get refunded for remaining days</li>
                             <li>Freeze possible</li>
                         </ul>
                     </div>
+                    <p style={{ marginBottom: 15, fontWeight: '700', color: '#2eba88', fontSize: 12 }}>* 3 memberships for the price of 1.5 memberships</p>
                 </div>
             </div>
         </div>

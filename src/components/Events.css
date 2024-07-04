@@ -9,9 +9,9 @@
 .events-title {
     font-size: 35px;
     margin-bottom: 20px;
-    color: 'white';
+    color: white;
     margin-top: 0;
-    font: 'DM Sans', sans-serif;
+    font-family: 'DM Sans', sans-serif;
 }
 
 .events-list {
@@ -25,6 +25,7 @@
     background-color: white;
     padding: 20px;
     padding-top: 40px;
+    padding-bottom: 10px;
     flex: 1 1 calc(25% - 20px);
     box-sizing: border-box;
     height: 400px;
@@ -43,6 +44,19 @@
 /* Optional: Add some spacing between items */
 .event-box+.event-box {
     margin-left: 20px;
+}
+
+/* Side scrolling for screens up to medium desktop size */
+@media (max-width: 1800px) {
+    .events-list {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+    }
+
+    .event-box {
+        flex: 0 0 45%;
+        margin-right: 10px;
+    }
 }
 
 @media (max-width: 768px) {
