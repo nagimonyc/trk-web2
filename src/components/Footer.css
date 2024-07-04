@@ -1,0 +1,21 @@
+.footer-container {
+    width: 100%;
+    /* background: linear-gradient(to left, #ff7e5f, #feb47b); */
+    background-color: #FCF7F3;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.footer-img {
+    width: 100%;
+    object-fit: contain;
+    background-color: #FCF7F3;
+}
+
+.footer-messaging {
+    display: flex;
+    flex-direction: row;
+    background-color: #FCF7F3;
+    justify-content: center;
+}

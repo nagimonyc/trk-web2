@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import StripeCheckout from "./components/StripeCheckout";
-import backgroundImage2 from './images/IMG_8105.jpeg';
+import backgroundImage2 from './images/IMG_6832.jpeg';
 import './Membership.css';  // Assume we create this CSS file
 import Modal from "./components/SignUpModal";
 import { useAuth } from "./AuthContext";
@@ -74,8 +74,16 @@ const Membership = () => {
         }
     };
 
-    const openQRModal = () => {
+
+    const handleEmailClick = () => {
+        const email = "nagimo.nyc@nagimo.org";
+        navigator.clipboard.writeText(email).then(() => {
+            alert("Email address copied to clipboard");
+        }).catch(err => {
+            console.error("Failed to copy: ", err);
+        });
     };
+
 
     return (
         <div className="membership-container">
@@ -86,7 +94,7 @@ const Membership = () => {
                         Logged In
                     </button>
                     <button className="passes-left-button">
-                        <span style={{ fontWeight: 600 }}>{37 - stripeCustomerCount}</span>/30 passes left
+                        <span style={{ fontWeight: 600 }}>{30 - stripeCustomerCount}</span>/30 passes left
                     </button>
                 </div>
             )}
@@ -98,7 +106,7 @@ const Membership = () => {
                     {!userData.isMember && <StripeCheckout />}
                     {isLoading && <div className="loading" style={{ width: '100%', display: 'flex', alignItems: 'center' }}>Loading...</div>}
                     {currentUser && userData.isMember && !isLoading &&
-                        <div className="welcome-steps fade-in" style={{ display: 'flex', flex: 1, height: 500, flexDirection: 'column' }}>
+                        <div className="welcome-steps fade-in" style={{ display: 'flex', flex: 1, height: 750, flexDirection: 'column' }}>
                             <div style={{ marginTop: 15, marginLeft: 25 }}>
                                 <p style={{ fontSize: 32, marginBottom: 10 }}>Welcome to Nagimo 🌺</p>
                                 <p style={{ margin: 0 }}>To activate membership, see below:</p>
@@ -135,12 +143,27 @@ const Membership = () => {
 
                                     )}
                                 </div>
+                                {userData.firstName && userData.lastName && userData.image && (
+                                    <div style={{ marginTop: 20 }}>
+                                        <p style={{ fontSize: 20, margin: 0, padding: 0 }}>🎉 : You're all set! Enjoy your membership. </p>
+                                        <p
+                                            style={{ fontSize: 10, fontStyle: 'italic', margin: 0, marginTop: 5, padding: 0, cursor: 'pointer', color: 'blue', textDecoration: 'underline' }}
+                                            onClick={handleEmailClick}
+                                        >
+                                            Cancel anytime. Get refunded for remaining days. Contact us at nagimo.nyc@nagimo.org
+                                        </p>
+                                    </div>
+
+                                )}
+                                <div>
+
+                                </div>
                             </div>
                         </div>
                     }
                 </div>
-            </main>
-        </div>
+            </main >
+        </div >
     );
 };
 

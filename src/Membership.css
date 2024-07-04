@@ -1,3 +1,11 @@
+/* Ensure font-size is at least 16px to prevent zooming on mobile devices */
+
+input[type="text"],
+input[type="password"],
+button {
+    font-size: 16px;
+}
+
 .membership-container {
     display: flex;
     flex-direction: column;
@@ -97,15 +105,11 @@
 }
 
 .logged-in-button {
-    /* right: 160px; */
     right: 10px;
-    /* Adjust this value to position the button */
     background-color: #4CAF50;
-    /* Green background */
 }
 
 .passes-left-button {
     left: 10px;
     background-color: #ff8100;
-    /* Orange background */
 }
