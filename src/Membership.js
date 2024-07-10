@@ -8,6 +8,7 @@ import appleDownloadImg from './images/AppleDL-SVG.svg'; // Import the Apple dow
 import googleDownloadImg from './images/google-play-badge.png'; // Import the Google Play image
 import { countUsersWithStripeCustomerId } from "./services/firebase-services";
 import QRDownload from './images/QR-DL.png';
+import Header from "./components/Header";
 
 const Membership = () => {
     const [isModalOpen, setIsModalOpen] = useState(true);
@@ -87,83 +88,94 @@ const Membership = () => {
 
     return (
         <div className="membership-container">
-            {!currentUser && <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />}
-            {currentUser && (
-                <div>
-                    <button className="logged-in-button">
-                        Logged In
-                    </button>
-                    <button className="passes-left-button">
-                        <span style={{ fontWeight: 600 }}>{30 - stripeCustomerCount}</span>/30 passes left
-                    </button>
-                </div>
-            )}
-            <main className="main-content">
-                <div className="background-container">
-                    <img src={backgroundImage2} alt="Background" className="background-image" />
-                </div>
-                <div id="checkout" style={{ width: '100%', display: 'flex', alignItems: 'center' }}>
-                    {!userData.isMember && <StripeCheckout />}
-                    {isLoading && <div className="loading" style={{ width: '100%', display: 'flex', alignItems: 'center' }}>Loading...</div>}
-                    {currentUser && userData.isMember && !isLoading &&
-                        <div className="welcome-steps fade-in" style={{ display: 'flex', flex: 1, height: 750, flexDirection: 'column' }}>
-                            <div style={{ marginTop: 15, marginLeft: 25 }}>
-                                <p style={{ fontSize: 32, marginBottom: 10 }}>Welcome to Nagimo 🌺</p>
-                                <p style={{ margin: 0 }}>To activate membership, see below:</p>
-                            </div>
-                            <div style={{ marginTop: 20, marginLeft: 25 }}>
-                                <p style={{ fontSize: 20 }}>{userData.isMember ? '✅' : '➡️'} : Complete payment</p>
-                                <p style={{ fontSize: 20 }}>{userData.firstName ? '✅' : '➡️'} : Submit first and last name</p>
-                                <div style={{ marginTop: 20, flex: 1, display: 'flex' }}>
-                                    <input type="text" placeholder="First name" style={{ marginRight: 10, width: 100, fontSize: 16 }} value={firstName} onChange={(e) => setFirstName(e.target.value)} />
-                                    <input type="text" placeholder="Last name" style={{ marginRight: 10, width: 100, fontSize: 16 }} value={lastName} onChange={(e) => setLastName(e.target.value)} />
-                                    <button onClick={handleNameSubmit} style={{}}>SUBMIT</button>
-                                </div>
-                                <p style={{ fontSize: 20, marginTop: 20 }}>{userData.firstName && userData.lastName && userData.image ? '✅' : '➡️'} : Get app, sign in, and upload selfie</p>
-                                <div
-                                    style={{
-                                        display: 'flex',
-                                        justifyContent: 'left',
-                                        alignItems: 'center',
-                                        flexDirection: 'row',
-                                        width: '100%',
-                                    }}
-                                >
-                                    {deviceType === 'Android' && (
-                                        <img src={googleDownloadImg} alt="Download on Google Play" onClick={handleAppDownload} style={{ cursor: 'pointer', width: '150px', height: 'auto' }} />
-                                    )}
-                                    {deviceType === 'iOS' && (
-                                        <img src={appleDownloadImg} alt="Download on App Store" onClick={handleAppDownload} style={{ cursor: 'pointer', width: '125px', height: 'auto' }} />
-                                    )}
-                                    {deviceType !== 'Android' && deviceType !== 'iOS' && (
-                                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                                            <img src={QRDownload} alt="Download via QR" style={{ cursor: 'pointer', width: '150px', height: 'auto', marginBottom: 10 }} />
-                                            <p style={{ color: 'black', fontStyle: 'initial', fontSize: 12 }}>Scan QR to download app</p>
-                                        </div>
+            <Header />
+            <div style={{ width: '70%' }}>
+                <h1>Welcome to Nagimo 🌺</h1>
+            </div>
+            <div className="button-container">
+                <button>Click here to get started</button>
+            </div>
+        </div>
 
-                                    )}
-                                </div>
-                                {userData.firstName && userData.lastName && userData.image && (
-                                    <div style={{ marginTop: 20 }}>
-                                        <p style={{ fontSize: 20, margin: 0, padding: 0 }}>🎉 : You're all set! Enjoy your membership. </p>
-                                        <p
-                                            style={{ fontSize: 10, fontStyle: 'italic', margin: 0, marginTop: 5, padding: 0, cursor: 'pointer', color: 'blue', textDecoration: 'underline' }}
-                                            onClick={handleEmailClick}
-                                        >
-                                            Cancel anytime. Get refunded for remaining days. Contact us at nagimo.nyc@nagimo.org
-                                        </p>
-                                    </div>
 
-                                )}
-                                <div>
+        // <div className="membership-container">
+        //     {!currentUser && <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />}
+        //     {currentUser && (
+        //         <div>
+        //             <button className="logged-in-button">
+        //                 Logged In
+        //             </button>
+        //             <button className="passes-left-button">
+        //                 <span style={{ fontWeight: 600 }}>{30 - stripeCustomerCount}</span>/30 passes left
+        //             </button>
+        //         </div>
+        //     )}
+        //     <main className="main-content">
+        //         <div className="background-container">
+        //             <img src={backgroundImage2} alt="Background" className="background-image" />
+        //         </div>
+        //         <div id="checkout" style={{ width: '100%', display: 'flex', alignItems: 'center' }}>
+        //             {!userData.isMember && <StripeCheckout />}
+        //             {isLoading && <div className="loading" style={{ width: '100%', display: 'flex', alignItems: 'center' }}>Loading...</div>}
+        //             {currentUser && userData.isMember && !isLoading &&
+        //                 <div className="welcome-steps fade-in" style={{ display: 'flex', flex: 1, height: 750, flexDirection: 'column' }}>
+        //                     <div style={{ marginTop: 15, marginLeft: 25 }}>
+        //                         <p style={{ fontSize: 32, marginBottom: 10 }}>Welcome to Nagimo 🌺</p>
+        //                         <p style={{ margin: 0 }}>To activate membership, see below:</p>
+        //                     </div>
+        //                     <div style={{ marginTop: 20, marginLeft: 25 }}>
+        //                         <p style={{ fontSize: 20 }}>{userData.isMember ? '✅' : '➡️'} : Complete payment</p>
+        //                         <p style={{ fontSize: 20 }}>{userData.firstName ? '✅' : '➡️'} : Submit first and last name</p>
+        //                         <div style={{ marginTop: 20, flex: 1, display: 'flex' }}>
+        //                             <input type="text" placeholder="First name" style={{ marginRight: 10, width: 100, fontSize: 16 }} value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+        //                             <input type="text" placeholder="Last name" style={{ marginRight: 10, width: 100, fontSize: 16 }} value={lastName} onChange={(e) => setLastName(e.target.value)} />
+        //                             <button onClick={handleNameSubmit} style={{}}>SUBMIT</button>
+        //                         </div>
+        //                         <p style={{ fontSize: 20, marginTop: 20 }}>{userData.firstName && userData.lastName && userData.image ? '✅' : '➡️'} : Get app, sign in, and upload selfie</p>
+        //                         <div
+        //                             style={{
+        //                                 display: 'flex',
+        //                                 justifyContent: 'left',
+        //                                 alignItems: 'center',
+        //                                 flexDirection: 'row',
+        //                                 width: '100%',
+        //                             }}
+        //                         >
+        //                             {deviceType === 'Android' && (
+        //                                 <img src={googleDownloadImg} alt="Download on Google Play" onClick={handleAppDownload} style={{ cursor: 'pointer', width: '150px', height: 'auto' }} />
+        //                             )}
+        //                             {deviceType === 'iOS' && (
+        //                                 <img src={appleDownloadImg} alt="Download on App Store" onClick={handleAppDownload} style={{ cursor: 'pointer', width: '125px', height: 'auto' }} />
+        //                             )}
+        //                             {deviceType !== 'Android' && deviceType !== 'iOS' && (
+        //                                 <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+        //                                     <img src={QRDownload} alt="Download via QR" style={{ cursor: 'pointer', width: '150px', height: 'auto', marginBottom: 10 }} />
+        //                                     <p style={{ color: 'black', fontStyle: 'initial', fontSize: 12 }}>Scan QR to download app</p>
+        //                                 </div>
 
-                                </div>
-                            </div>
-                        </div>
-                    }
-                </div>
-            </main >
-        </div >
+        //                             )}
+        //                         </div>
+        //                         {userData.firstName && userData.lastName && userData.image && (
+        //                             <div style={{ marginTop: 20 }}>
+        //                                 <p style={{ fontSize: 20, margin: 0, padding: 0 }}>🎉 : You're all set! Enjoy your membership. </p>
+        //                                 <p
+        //                                     style={{ fontSize: 10, fontStyle: 'italic', margin: 0, marginTop: 5, padding: 0, cursor: 'pointer', color: 'blue', textDecoration: 'underline' }}
+        //                                     onClick={handleEmailClick}
+        //                                 >
+        //                                     Cancel anytime. Get refunded for remaining days. Contact us at nagimo.nyc@nagimo.org
+        //                                 </p>
+        //                             </div>
+
+        //                         )}
+        //                         <div>
+
+        //                         </div>
+        //                     </div>
+        //                 </div>
+        //             }
+        //         </div>
+        //     </main >
+        // </div >
     );
 };
 
