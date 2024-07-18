@@ -1,5 +1,6 @@
 import React from "react";
 import "./ValueProp.css";
+import VerticalCountUp from "./VerticalCountUp";
 
 const ValueProp = () => {
     return (
