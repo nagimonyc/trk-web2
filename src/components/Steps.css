@@ -1,0 +1,18 @@
+.steps-container {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.step {
+    color: grey;
+}
+
+.step.active {
+    color: #ff6633;
+    font-weight: bold;
+}
+
+.arrow {
+    margin: 0 5px;
+}

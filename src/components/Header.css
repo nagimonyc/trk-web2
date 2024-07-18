@@ -37,6 +37,18 @@
     font-weight: 700;
 }
 
+.header-button2 {
+    border-radius: 8px;
+    border: 2px solid #397538;
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #397538;
+    color: white;
+    height: 30px;
+    font-weight: 700;
+}
+
 @media (max-width: 768px) {
     .header-desktop {
         display: flex;
