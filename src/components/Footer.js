@@ -2,7 +2,7 @@ import React from "react";
 import './Footer.css';
 import nagimoTeam from '../images/IMG_6777-1.png';
 
-const Footer = () => {
+const Footer = ({ page }) => {
     return (
         <div className="footer-container">
             <img src={nagimoTeam} className="footer-img" alt="Nagimo Team" />

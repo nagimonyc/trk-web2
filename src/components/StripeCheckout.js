@@ -9,12 +9,10 @@ function StripeCheckout() {
     useEffect(() => {
         async function setupStripe() {
             if (currentUser && currentUser.uid) {
-                // console.log('Setting up stripe with userId:', currentUser.uid);
                 try {
                     const stripeCheckoutInstance = await initializeStripe(currentUser.uid, currentUser.email);
                     stripeCheckoutInstanceRef.current = stripeCheckoutInstance;
                     stripeCheckoutInstance.mount('#checkout');
-                    // console.log('Stripe mounted');
                 } catch (error) {
                     console.error('Error setting up Stripe:', error);
                 }
@@ -24,7 +22,6 @@ function StripeCheckout() {
         setupStripe();
 
         return () => {
-            // console.log('Cleaning up Stripe');
             if (stripeCheckoutInstanceRef.current) {
                 stripeCheckoutInstanceRef.current.unmount();
                 stripeCheckoutInstanceRef.current = null;
@@ -32,9 +29,6 @@ function StripeCheckout() {
         };
     }, [currentUser?.uid]); // Depend on currentUser.uid to re-run the effect
 
-    // if (!currentUser?.uid) {
-    //     return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flex: 1 }}></div>;
-    // }
 
     return null; // Or render something related to the checkout process
 }

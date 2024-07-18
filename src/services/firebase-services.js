@@ -8,7 +8,8 @@ import {
     signInWithPopup,
     signOut,
 } from "firebase/auth";
-import { getFirestore, doc, setDoc, getDoc, collection, where, getDocs, query } from "firebase/firestore"; // include getDoc and collection
+import { getFirestore, doc, setDoc, getDoc, collection, where, getDocs, query } from "firebase/firestore";
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
 const firebaseConfig = {
     apiKey: "AIzaSyA2IY2lRkSTLCJU-P5DlA38gjrL--cTcuk",
@@ -23,6 +24,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+const storage = getStorage(app);
 
 const registerUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -61,7 +63,7 @@ const getUser = async (userId) => {
     } else {
         return null;
     }
-}
+};
 
 const setFirstandLastName = async (userId, firstName, lastName) => {
     const userRef = doc(db, "users", userId);
@@ -72,7 +74,7 @@ const setFirstandLastName = async (userId, firstName, lastName) => {
             lastName: lastName,
         }, { merge: true });
     }
-}
+};
 
 const countUsersWithStripeCustomerId = async () => {
     const usersRef = collection(db, "users");
@@ -81,4 +83,30 @@ const countUsersWithStripeCustomerId = async () => {
     return querySnapshot.size;
 };
 
-export { app, auth, db, registerUser, signInUser, resetPassword, signInWithGoogle, logOut, addUserToFirestore, getUser, setFirstandLastName, countUsersWithStripeCustomerId };
+// Function to fetch image URL from Firebase Storage
+const fetchImageURL = async (imagePath) => {
+    try {
+        const storageRef = ref(storage, imagePath);
+        const url = await getDownloadURL(storageRef);
+        return url;
+    } catch (error) {
+        console.error("Error getting image URL: ", error);
+        throw error;
+    }
+};
+
+export {
+    app,
+    auth,
+    db,
+    registerUser,
+    signInUser,
+    resetPassword,
+    signInWithGoogle,
+    logOut,
+    addUserToFirestore,
+    getUser,
+    setFirstandLastName,
+    countUsersWithStripeCustomerId,
+    fetchImageURL,
+};
