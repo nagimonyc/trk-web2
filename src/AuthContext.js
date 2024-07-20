@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getFirestore, doc, onSnapshot, updateDoc, getDoc, setDoc } from "firebase/firestore";
-import { app } from './firebase-config'; // Adjust the path as needed
+import { app } from './services/firebase-services'; // Adjusting path to make firebase-config redundant.
 
 export const AuthContext = createContext();
 

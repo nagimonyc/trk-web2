@@ -3,16 +3,14 @@ import StripeCheckout from "./components/StripeCheckout";
 import './Membership.css';  // Assume we create this CSS file
 import Modal from "./components/SignUpModal";
 import { useAuth } from "./AuthContext";
-import { countUsersWithStripeCustomerId, getUser, fetchImageURL } from "./services/firebase-services";
+import { getUser, fetchImageURL } from "./services/firebase-services";
 import Header from "./components/Header";
 import Steps from './components/Steps';
 import Card from './components/Card';  // Import the Card component
 import QRDownload from './images/QR-DL.png';
 import googleDownloadImg from './images/google-play-badge.png';
 import appleDownloadImg from './images/AppleDL-SVG.svg';
-
 import Footer from './components/Footer';
-import polaImages from './images/IMG_6777-1.png';
 
 const Membership = () => {
     const [isModalOpen, setIsModalOpen] = useState(true);
@@ -27,19 +25,6 @@ const Membership = () => {
     const [deviceType, setDeviceType] = useState(null);
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const count = await countUsersWithStripeCustomerId();
-                setStripeCustomerCount(count);
-            } catch (error) {
-                console.error('Error fetching stripe customer count:', error);
-            }
-        };
-
-        fetchData();
-    }, []);
-
-    useEffect(() => {
         if (currentUser) {
             const fetchUserDetails = async () => {
                 try {
@@ -49,8 +34,8 @@ const Membership = () => {
                         if (userData.image && userData.image[0] && userData.image[0].path) {
                             const url = await fetchImageURL(userData.image[0].path);
                             setPhotoUrl(url);
-                            setFirstName(userData.firstName);
-                            setLastName(userData.lastName);
+                            setFirstName(userData.firstName); // WARNING, value might be UNDEFINED
+                            setLastName(userData.lastName); // WARNING, value might be UNDEFINED
                         }
                     }
                 } catch (error) {
