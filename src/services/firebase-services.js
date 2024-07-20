@@ -40,6 +40,9 @@ const resetPassword = (email) => {
 
 const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
+    provider.setCustomParameters({
+        client_id: '786555738802-pisnqupfbs7oqfqvba5vb5b83dvf8jfn.apps.googleusercontent.com' // Replace with your actual web client ID
+    });
     return signInWithPopup(auth, provider);
 };
 
@@ -76,13 +79,6 @@ const setFirstandLastName = async (userId, firstName, lastName) => {
     }
 };
 
-const countUsersWithStripeCustomerId = async () => {
-    const usersRef = collection(db, "users");
-    const q = query(usersRef, where("isMember", "!=", null));
-    const querySnapshot = await getDocs(q);
-    return querySnapshot.size;
-};
-
 // Function to fetch image URL from Firebase Storage
 const fetchImageURL = async (imagePath) => {
     try {
@@ -107,6 +103,5 @@ export {
     addUserToFirestore,
     getUser,
     setFirstandLastName,
-    countUsersWithStripeCustomerId,
     fetchImageURL,
 };

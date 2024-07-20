@@ -5,7 +5,8 @@ import doorLogo from '../images/Group-3.png';
 import { useAuth } from '../AuthContext';
 import { getFirestore, doc, setDoc, getDoc, collection, connectFirestoreEmulator } from "firebase/firestore";
 
-const Modal = ({ isOpen, onClose, position }) => {
+
+const Modal = ({ isOpen, onClose }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const { currentUser, updateUserDocument } = useAuth();
@@ -13,49 +14,81 @@ const Modal = ({ isOpen, onClose, position }) => {
     if (!isOpen) return null;
 
     const handleSignUp = async () => {
+        if (!email.trim() || !password.trim()) {
+            window.alert('Error', 'Email and password must not be empty');
+            return;
+        }
         try {
             const userCredential = await registerUser(email, password);
             if (userCredential.user) {
                 updateUserDocument(userCredential.user.uid, {
-                    role: 'climber',
-                    origin: 'web',
+                    origin: 'web - signup',
                     timestamp: new Date(),
-                    username: email.split('@')[0],
+                    username: userCredential.user.email.split('@')[0],
                     isNewUser: true,
                     uid: userCredential.user.uid,
-                    email: email,
+                    email: userCredential.user.email,
                 });
             }
             onClose(); // Close the modal upon successful sign-up
         } catch (error) {
-            console.error('Error signing up:', error.message);
+            if (error.code === 'auth/email-already-in-use') {
+
+                window.alert('Email already in use')
+
+            } else if (password.length < 6) {
+                window.alert('Password must be at least 6 characters')
+            } else if (error.code === 'auth/invalid-email') {
+                window.alert('Must use a valid email')
+            }
+            else {
+                window.alert('Something went wrong with signup')
+            }
         }
     };
 
     const handleSignIn = async () => {
+        if (!email.trim() || !password.trim()) {
+            window.alert('Error', 'Email and password must not be empty');
+            return;
+        }
         try {
-            const userCredential = await signInUser(email, password);
+            await signInUser(email, password); // removed unused const variable
             onClose(); // Close the modal upon successful sign-in
         } catch (error) {
-            console.error('Error signing in:', error.message);
+            window.alert('Invalid email or password. Passwords are case sensitive');
         }
     }
 
     const handleGoogleSignInSuccess = async (user, token) => {
-        const userRef = doc(db, "users", user.uid);
-        const docSnapshot = await getDoc(userRef);
-        if (docSnapshot.exists()) {
-            console.log('User already exists, not creating a new Firestore entry.');
-        } else {
-            await addUserToFirestore(user, {
-                role: 'climber',
-                timestamp: new Date(),
-                username: user.email.split('@')[0],
-                isNewUser: true,
-            });
+        try {
+            if (!user || !user.uid) {
+                console.error('Google Sign-In success but user or user.uid is undefined');
+                return;
+            }
+
+            const userRef = doc(db, "users", user.uid);
+            const docSnapshot = await getDoc(userRef);
+            if (docSnapshot.exists()) {
+                updateUserDocument(user.uid, {
+                    origin: 'app to web',
+                    isNewUser: false,
+                });
+            } else {
+                await addUserToFirestore(user, {
+                    email: user.email,
+                    origin: 'web - Google',
+                    timestamp: new Date(),
+                    username: user.email.split('@')[0],
+                    isNewUser: true,
+                });
+            }
+            onClose(); // Close the modal upon successful check or addition
+        } catch (error) {
+            console.error('Error in handleGoogleSignInSuccess:', error);
         }
-        onClose(); // Close the modal upon successful check or addition
     };
+
 
     const handleGoogleSignInError = (errorCode, errorMessage, email, credential) => {
         console.error('Google Sign-In error:', errorMessage);
@@ -64,7 +97,6 @@ const Modal = ({ isOpen, onClose, position }) => {
     return (
         <div style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)', padding: 20, width: 310, height: 'auto', borderRadius: 20, zIndex: 2, border: '2px solid #ff6633' }}>
             <img src={doorLogo} alt="Entry Logo" style={{ height: 50, width: 50 }} />
-            {/* <p style={{ marginTop: 3, marginBottom: 8.5, fontSize: 24, fontWeight: '600' }}>Welcome to Nagimo</p> */}
             <p style={{ marginTop: 2.5, marginBottom: 25, fontSize: 14 }}>Please log in or sign up below.</p>
             <div>
                 <div style={{ flexDirection: 'column', display: 'flex' }}>
