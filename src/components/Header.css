@@ -1,12 +1,9 @@
 .header-container {
     width: 100%;
-    /* background: linear-gradient(to left, #ff7e5f, #feb47b); */
     background-color: #FCF7F3;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    /* padding: 0 20px; */
-    /* padding-top: 15px; */
     box-sizing: border-box;
     position: sticky;
     top: 0;
@@ -38,15 +35,59 @@
 }
 
 .header-button2 {
-    border-radius: 8px;
+    border-radius: 50%;
     border: 2px solid #397538;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    /* Remove any default padding */
+    overflow: hidden;
+    /* Ensure the image stays within the circle */
+    display: flex;
+    /* Center the image within the button */
+    align-items: center;
+    /* Center the image vertically */
+    justify-content: center;
+    /* Center the image horizontally */
+}
+
+.profile-img {
     width: 100%;
-    padding-left: 15px;
-    padding-right: 15px;
-    background-color: #397538;
-    color: white;
-    height: 30px;
-    font-weight: 700;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profile-container {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 45px;
+    /* Adjust to position dropdown below the button */
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+}
+
+.dropdown-item {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: white;
+    border: none;
+    text-align: left;
+    width: 100%;
+    color: black;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    width: 100px;
+}
+
+.dropdown-item:hover {
+    background-color: #f0f0f0;
 }
 
 @media (max-width: 768px) {
@@ -54,7 +95,6 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        /* background-color: yellow; */
         width: 90%;
     }
 }

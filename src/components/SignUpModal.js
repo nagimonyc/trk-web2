@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { signInUser, registerUser, signInWithGoogle, addUserToFirestore, db } from '../services/firebase-services';
+import { signInUser, registerUser, signInWithGoogle, addUserToFirestore, db, resetPassword } from '../services/firebase-services';
 import GoogleSignInButton from "./GoogleSignInButton";
 import doorLogo from '../images/Group-3.png';
 import { useAuth } from '../AuthContext';
@@ -36,10 +36,10 @@ const Modal = ({ isOpen, onClose }) => {
 
                 window.alert('Email already in use')
 
-            } else if (password.length < 6) {
-                window.alert('Password must be at least 6 characters')
             } else if (error.code === 'auth/invalid-email') {
                 window.alert('Must use a valid email')
+            } else if (password.length < 6) {
+                window.alert('Password must be at least 6 characters')
             }
             else {
                 window.alert('Something went wrong with signup')
@@ -59,6 +59,20 @@ const Modal = ({ isOpen, onClose }) => {
             window.alert('Invalid email or password. Passwords are case sensitive');
         }
     }
+
+    // const handleForgotPassword = () => {
+    //     if (!email.trim()) {
+    //         window.alert('Error', 'Please enter your email address');
+    //         return;
+    //     }
+    //     resetPassword(email)
+    //         .then(() => {
+    //             window.alert("Password Reset", "Check your email to reset your password.");
+    //         })
+    //         .catch(error => {
+    //             window.alert("Reset Password Error", error.message);
+    //         });
+    // };
 
     const handleGoogleSignInSuccess = async (user, token) => {
         try {
@@ -162,6 +176,13 @@ const Modal = ({ isOpen, onClose }) => {
                     onSuccess={handleGoogleSignInSuccess}
                     onError={handleGoogleSignInError}
                 />
+                {/* <p style={{
+                    color: '#7B7B7B',
+                    marginTop: 40,
+                    cursor: 'pointer',
+                }} onClick={handleForgotPassword}>
+                    Reset your password
+                </p> */}
             </div>
         </div>
     );

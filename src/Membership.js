@@ -82,7 +82,7 @@ const Membership = () => {
 
     return (
         <div className="membership-container">
-            <Header step={currentStep} />
+            <Header step={currentStep} photoUrl={photoUrl} />
             <div className="membership-sizer">
                 <div style={{ marginBottom: 20 }}>
                     <h1>Welcome to Nagimo</h1>
@@ -93,6 +93,7 @@ const Membership = () => {
                         <Modal isOpen={isModalOpen} onClose={handleModalClose} />
                     </div>
                 )}
+                {/* I want to add a loading animation here: */}
                 {currentStep === 2 && (
                     <div id="checkout" style={{ width: '100%', display: 'flex', alignItems: 'center' }}>
                         <StripeCheckout />
