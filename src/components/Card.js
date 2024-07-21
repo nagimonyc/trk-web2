@@ -13,10 +13,12 @@ const Card = ({ firstName, lastName, photoUrl, currentStep }) => {
             </div>
             <div style={styles.photoContainer}>
                 {photoUrl ? (
-                    <img src={photoUrl} alt="User Photo" style={styles.photo} />
+                    <div style={styles.photoWrapper}>
+                        <img src={photoUrl} alt="User Photo" style={styles.photo} />
+                        <div style={styles.overlayText}>Sample</div>
+                    </div>
                 ) : (
                     <div style={styles.photoPlaceholder}>
-
                         <img src={userPic} alt="Missing Photo" style={{ height: 75, width: 75, position: 'relative' }} />
                     </div>
                 )}
@@ -27,8 +29,7 @@ const Card = ({ firstName, lastName, photoUrl, currentStep }) => {
             <div style={styles.membershipStatus}>
                 <p style={{ margin: 0 }}>MEMBER</p>
             </div>
-
-        </div >
+        </div>
     );
 };
 
@@ -57,10 +58,28 @@ const styles = {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        position: 'relative',  // Added for overlay positioning
+    },
+    photoWrapper: {
+        position: 'relative',
+        width: '100%',
+        height: '100%',
     },
     photo: {
         width: '100%',
         height: '100%',
+    },
+    overlayText: {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        color: 'white',
+        fontSize: '24px',
+        fontWeight: 'bold',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        padding: '5px 10px',
+        borderRadius: '5px',
     },
     photoPlaceholder: {
         width: '100%',
@@ -86,7 +105,6 @@ const styles = {
         margin: 0,
     },
     membershipStatus: {
-        // padding: '15px',
         borderRadius: '5px',
         backgroundColor: '#397538',
         color: 'white',
