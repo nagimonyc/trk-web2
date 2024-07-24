@@ -1,10 +1,94 @@
-/* Ensure font-size is at least 16px to prevent zooming on mobile devices */
+/* Membership2.css */
+
+.what-youll-get-container {
+    width: 100%;
+}
+
+@media (min-width: 1400px) {
+    .what-youll-get-container {
+        width: 800px;
+        /* fixed width for desktop, adjust as needed */
+    }
+}
+
+.perks-container {
+    display: flex;
+    flex-direction: column;
+    /* default for mobile */
+}
+
+.perk-item {
+    margin-top: 20px;
+    width: 100%;
+    /* Default to full width for mobile */
+}
+
+.perk-image {
+    height: 100%;
+    object-fit: cover;
+    margin-top: 20px;
+    width: 100%;
+    height: 250px;
+}
+
+.besides-container {
+    display: flex;
+    flex-direction: row;
+    /* default for mobile */
+}
+
+@media (min-width: 768px) {
+    .perks-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        /* allows items to wrap if necessary */
+    }
+
+    .perk-item {
+        flex: 1 1 calc(33.333% - 20px);
+        /* Three items per row, minus margins */
+        margin-right: 20px;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+        /* Ensure spacing at the bottom */
+    }
+
+    .perk-item:nth-child(3n) {
+        margin-right: 0;
+        /* Remove margin for every 3rd item */
+    }
+}
+
+/* Ensure no overlapping by using clear: both */
+.perk-item::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@media (max-width: 768px) {
+    .perk-item {
+        flex: 0 0 100%;
+        /* Full width for smaller screens */
+        margin-right: 0;
+    }
+}
+
+/* Rest of your CSS */
+.membership-container2 {
+    display: flex;
+    min-height: 100vh;
+    height: auto;
+    width: 100%;
+    background-color: #FCF7F3;
+    flex-direction: column;
+    align-items: center;
+}
+
 .membership-container {
     display: flex;
     min-height: 100vh;
-    /* Ensure it covers the full viewport height */
     height: auto;
-    /* Allow it to expand based on content */
     width: 100%;
     background-color: #FCF7F3;
     flex-direction: column;
@@ -55,7 +139,6 @@ body {
     z-index: 1000;
 }
 
-/* Ensure modal content visibility */
 .modal-content {
     display: flex;
     flex-direction: column;
@@ -80,7 +163,6 @@ body {
 .membership-sizer {
     width: 90%;
 }
-
 
 @media (min-width: 768px) {
     .row-layout {
