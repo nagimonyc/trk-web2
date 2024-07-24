@@ -14,6 +14,7 @@ const Partners = () => {
         <div className="partners-container" >
             <h1 className="partners-title">Events</h1>
             <div className="partners-list">
+                <PartnersBox time="BKB" place="partner Place 1" url="" image="Meetup-BKB2.avif" />
                 <PartnersBox time="6:00 PM" place="partner Place 3" url="https://www.instagram.com/p/C7eqkYiu-F6/" image="Nagimondays-1.avif" />
                 <PartnersBox time="MetroRock" place="partner Place 1" url="https://www.instagram.com/p/C8j8hqxOLF6/" image="Meetup-BKB.avif" />
                 <PartnersBox time="2:00 PM" place="partner Place 2" url="https://www.instagram.com/p/C79gCBbO2J2/" image="Meetup-Bushwick.avif" />
