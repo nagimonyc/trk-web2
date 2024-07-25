@@ -38,7 +38,7 @@ const Subscription = () => {
                             onTouchStart={(e) => e.target.style.transform = 'scale(0.95)'} // Also handles touch screens
                             onTouchEnd={(e) => e.target.style.transform = 'scale(1)'} // Reset on touch end
                         >
-                            <p style={{ fontSize: '17px', margin: 0, fontWeight: '700', color: "white" }}>Join us!</p>
+                            <p style={{ fontSize: '17px', margin: 0, fontWeight: '700', color: "white" }}>Get Started</p>
                         </button>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column' }}>

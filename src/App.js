@@ -12,8 +12,8 @@ function App() {
     <AuthProvider>
       <Router>
         <Routes>
-          <Route path="/membership" element={<Membership />} />
-          <Route path="/membership2" element={<Membership2 />} />
+          <Route path="/join" element={<Membership />} />
+          <Route path="/membership" element={<Membership2 />} />
           <Route path="/" element={<Home />} />
         </Routes>
       </Router>

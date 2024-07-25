@@ -8,31 +8,31 @@ const Subscription2 = () => {
     const navigate = useNavigate();
 
     const handleButtonClick = () => {
-        navigate('/membership'); // Ensure this route exists in your Routes
+        navigate('/join'); // Ensure this route exists in your Routes
     };
 
     return (
         <div className="subscription-mega-container" style={{ width: '100%' }}>
-            <div className="subscription-container" style={{}}>
+            <div className="subscription-container" style={{ maxWidth: '600px' }}>
                 <div className="subscription-header" style={{ height: '90px', justifyContent: 'center', alignItems: 'center' }} >
                     <p className="" style={{
                         // backgroundColor: 'rgba(252, 247, 243, .30)',
                         color: 'white',
                         fontWeight: 700,
                         height: 60,
-                        width: 200,
+                        width: 250,
                         borderRadius: 10,
                         textAlign: 'center',
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
                         fontSize: 28
-                    }}>Save $2,460</p>
+                    }}>No initiation fee.</p>
                 </div>
                 <div style={{ paddingLeft: 20, paddingRight: 20 }}>
                     {/* Save money */}
                     <div style={{ paddingTop: 5 }}>
-                        <p style={{ fontSize: '96px', fontWeight: '700', color: '#ff6633', marginBottom: 0, marginTop: 20, textAlign: 'center' }}>$199
+                        <p className="value-paragraph" >$169.99
                             <span style={{ fontSize: '14px' }}>
                                 / mo
                             </span>
@@ -46,7 +46,7 @@ const Subscription2 = () => {
                             onTouchStart={(e) => e.target.style.transform = 'scale(0.95)'} // Also handles touch screens
                             onTouchEnd={(e) => e.target.style.transform = 'scale(1)'} // Reset on touch end
                         >
-                            <p style={{ fontSize: '17px', margin: 0, fontWeight: '700', color: "white" }}>Join us!</p>
+                            <p style={{ fontSize: '17px', margin: 0, fontWeight: '700', color: "white" }}>Start Now</p>
                         </button>
                     </div>
 

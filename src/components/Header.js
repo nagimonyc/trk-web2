@@ -37,7 +37,7 @@ const Header = ({ step, photoUrl }) => {
                             onTouchStart={(e) => e.target.style.transform = 'scale(0.95)'} // Also handles touch screens
                             onTouchEnd={(e) => e.target.style.transform = 'scale(1)'} // Reset on touch end
                         >
-                            Join us!
+                            Get Started
                         </button>
                     )}
                     {currentStep === 1 && ('')}
