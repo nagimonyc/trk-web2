@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Home';
 import Membership from './Membership';
 import { AuthProvider } from './AuthContext';
+import Membership2 from './Membership2';
 
 
 function App() {
@@ -11,7 +12,8 @@ function App() {
     <AuthProvider>
       <Router>
         <Routes>
-          <Route path="/membership" element={<Membership />} />
+          <Route path="/join" element={<Membership />} />
+          <Route path="/membership" element={<Membership2 />} />
           <Route path="/" element={<Home />} />
         </Routes>
       </Router>

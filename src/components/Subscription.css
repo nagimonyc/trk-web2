@@ -37,14 +37,29 @@
     font-size: 14px;
 }
 
+.value-paragraph {
+    font-size: 96px;
+    font-weight: 700;
+    color: #ff6633;
+    margin-bottom: 0px;
+    margin-top: 20px;
+    text-align: center;
+
+}
+
 .subscription-mega-container {
     display: flex;
     flex-direction: column;
     width: 70%;
+    align-items: center;
 }
 
 @media (max-width: 768px) {
     .subscription-mega-container {
         width: 90%;
+    }
+
+    .value-paragraph {
+        font-size: 60px;
     }
 }
