@@ -12,7 +12,7 @@ const Subscription2 = () => {
     };
 
     return (
-        <div className="subscription-mega-container" style={{ width: '100%' }}>
+        <div className="subscription-mega-container" style={{ width: '100%', alignItems: 'center' }}>
             <div className="subscription-container" style={{ maxWidth: '600px' }}>
                 <div className="subscription-header" style={{ height: '90px', justifyContent: 'center', alignItems: 'center' }} >
                     <p className="" style={{
