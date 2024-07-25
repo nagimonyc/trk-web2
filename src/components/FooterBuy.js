@@ -1,12 +1,29 @@
 import React from 'react';
 import './FooterBuy.css';
+import { useNavigate } from 'react-router-dom';
 
 const FooterBuy = () => {
+
+
+    const navigate = useNavigate();
+
+    const handleButtonClick = () => {
+        navigate('/join'); // Ensure this route exists in your Routes
+    };
+
+
     return (
         <div className="footerbuy-container">
             <div className='footerbuy-sizer'>
                 <div className="mobile-only">
-                    <button className='footerbuy-button'>
+                    <button className='footerbuy-button'
+                        onClick={handleButtonClick}
+                        onMouseDown={(e) => e.target.style.transform = 'scale(0.95)'} // Scales down when mouse is down
+                        onMouseUp={(e) => e.target.style.transform = 'scale(1)'} // Scales back when mouse is released
+                        onTouchStart={(e) => e.target.style.transform = 'scale(0.95)'} // Also handles touch screens
+                        onTouchEnd={(e) => e.target.style.transform = 'scale(1)'} // Reset on touch end
+
+                    >
                         Buy Membership
                     </button>
                 </div>
@@ -22,7 +39,14 @@ const FooterBuy = () => {
                         </div>
                     </div>
                     <div style={{ width: '33%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <button className='footerbuy-button'>
+                        <button className='footerbuy-button'
+                            onClick={handleButtonClick}
+                            onMouseDown={(e) => e.target.style.transform = 'scale(0.95)'} // Scales down when mouse is down
+                            onMouseUp={(e) => e.target.style.transform = 'scale(1)'} // Scales back when mouse is released
+                            onTouchStart={(e) => e.target.style.transform = 'scale(0.95)'} // Also handles touch screens
+                            onTouchEnd={(e) => e.target.style.transform = 'scale(1)'} // Reset on touch end
+
+                        >
                             Buy Membership
                         </button>
                     </div>
