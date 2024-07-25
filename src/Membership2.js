@@ -33,14 +33,14 @@ const Membership2 = () => {
             <div className="membership-container" style={{ backgroundColor: 'white', minHeight: 0, marginTop: 48 }}>
                 <div className="membership-sizer">
                     <h2 style={{ fontWeight: 500, marginTop: 0 }}>Discover our perks to help you meet new climbers and explore more gyms</h2>
-                    <div className="perks-container">
+                    <div className="perks-container" style={{ marginBottom: 48 }}>
                         <div className="perk-item">
                             <img src={teamwork} alt="Teamwork" className="perk-image" />
                             <h3 style={{}}>Meet New Climbers</h3>
                             <p style={{ fontSize: 16, marginBottom: 48 }}>Get to know the Nagimo community in-person and online.</p>
                             <div className="besides-container">
                                 <div style={{ width: '10%' }}>
-                                    <img src={climbWithUsIcon} alt="Climb with us" style={{ width: 20, height: 20 }} />
+                                    <img src={climbWithUsIcon} alt="Climb with us" style={{ width: 22, height: 20 }} />
                                 </div>
                                 <div style={{ width: '90%' }}>
                                     <h5 style={{ marginTop: 0, fontSize: 16, marginBottom: 0 }}>Come climb with us</h5>
@@ -81,7 +81,7 @@ const Membership2 = () => {
                             </div>
                             <div className="besides-container">
                                 <div style={{ width: '10%' }}>
-                                    <img src={FitnessClass} alt="Climb with us" style={{ width: 20, height: 20 }} />
+                                    <img src={FitnessClass} alt="Climb with us" style={{ width: 22, height: 20 }} />
                                 </div>
                                 <div style={{ width: '90%' }}>
                                     <h5 style={{ marginTop: 0, fontSize: 16, marginBottom: 0 }}>Try Out a Group Fitness Class</h5>
@@ -135,7 +135,7 @@ const Membership2 = () => {
                                 </div>
                                 <div style={{ width: '90%' }}>
                                     <h5 style={{ marginTop: 0, fontSize: 16, marginBottom: 0 }}>Bouldering and Rope Climbing</h5>
-                                    <p style={{ fontSize: 14, marginTop: 5 }}>Prefer top or lead? We’ve got you covered too.</p>
+                                    <p style={{ fontSize: 14, marginTop: 5, marginBottom: 0 }}>Prefer top or lead? Get both.</p>
                                 </div>
                             </div>
                         </div>
@@ -145,7 +145,7 @@ const Membership2 = () => {
             <div className="membership-container" style={{ minHeight: 0 }}>
                 <div className="membership-sizer">
                     <div className="what-youll-get-container" style={{ marginBottom: 24 }}>
-                        <h1 style={{ fontSize: 35 }}>What you'll get</h1>
+                        <h1 style={{ fontSize: 35, marginTop: 48 }}>What you'll get</h1>
                         <div style={{ display: 'flex', flexDirection: 'column' }}>
                             {/* titles */}
                             <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -153,6 +153,12 @@ const Membership2 = () => {
                                 <div style={{ width: '30%', textAlign: 'center' }}><p style={{ fontWeight: "bold" }}>Membership</p></div>
                             </div>
                             {/*  */}
+                            <div style={{ border: '0.001px solid gray' }}></div>
+                            {/* b1 */}
+                            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <div><p style={{ fontSize: 14 }}>Access multiple gyms</p></div>
+                                <div style={{ width: '30%', textAlign: 'center', alignSelf: 'center' }}><TickIcon /></div>
+                            </div>
                             <div style={{ border: '0.001px solid gray' }}></div>
                             {/* b1 */}
                             <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>

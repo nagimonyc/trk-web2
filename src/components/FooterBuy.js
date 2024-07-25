@@ -35,7 +35,7 @@ const FooterBuy = () => {
                         </div>
                         <div style={{}}>
                             <p style={{ margin: 0, fontSize: 12 }}>No initiation fee</p>
-                            <p style={{ margin: 0, fontSize: 12 }}>Guaranteed lifetime rate</p>
+                            <p style={{ margin: 0, fontSize: 12 }}>Guaranteed lifetime rate. Cancel anytime.</p>
                         </div>
                     </div>
                     <div style={{ width: '33%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
