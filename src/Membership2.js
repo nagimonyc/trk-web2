@@ -16,11 +16,12 @@ import GradingSystem from '../src/images/GradingSystem.png';
 import FitnessClass from '../src/images/FitnessClass.png';
 import TickIcon from "./components/TickIcon";
 import Footer from "./components/Footer";
+import FooterBuy from "./components/FooterBuy";
 
 const Membership2 = () => {
     return (
-        <div>
-            <Header />
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+            <Header page="membership" />
             <div className="membership-container" style={{ minHeight: 0 }}>
                 <div className="membership-sizer" style={{ marginBottom: 64 }}>
                     <div style={{ marginBottom: 40, marginTop: 80 }}>
@@ -252,8 +253,8 @@ const Membership2 = () => {
                     </div>
                     <Footer />
                 </div>
-
             </div>
+            <FooterBuy />
         </div >
     );
 };

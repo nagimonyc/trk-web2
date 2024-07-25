@@ -5,7 +5,7 @@ import nagimologo from '../images/Nagimo-Logotype.png';
 import profile from '../images/Vector2.png';
 import { logOut } from '../services/firebase-services';
 
-const Header = ({ step, photoUrl }) => {
+const Header = ({ step, photoUrl, page }) => {
     const currentStep = step ? step : 0;
     const navigate = useNavigate();
     const [isDropdownVisible, setDropdownVisible] = useState(false);
@@ -30,7 +30,7 @@ const Header = ({ step, photoUrl }) => {
                     <img src={nagimologo} alt="Nagimo Logo" style={{ height: '100%', width: 150, objectFit: 'contain' }} />
                 </a>
                 <div className="header-item">
-                    {currentStep === 0 && (
+                    {currentStep === 0 && !page && (
                         <button onClick={handleButtonClick} className='header-button' style={{ cursor: 'pointer' }}
                             onMouseDown={(e) => e.target.style.transform = 'scale(0.95)'} // Scales down when mouse is down
                             onMouseUp={(e) => e.target.style.transform = 'scale(1)'} // Scales back when mouse is released

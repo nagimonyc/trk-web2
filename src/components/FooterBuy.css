@@ -1,0 +1,76 @@
+/* FooterBuy.css */
+
+.footerbuy-container {
+    height: 75px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: sticky;
+    bottom: 0;
+    z-index: 100;
+}
+
+.footerbuy-button {
+    color: white;
+    border-radius: 8px;
+    border: 2px solid #ff6633;
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #ff6633;
+    height: 30px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.footerbuy-sizer {
+    width: 90%;
+}
+
+.mobile-only {
+    display: none;
+}
+
+.desktop-only {
+    display: flex;
+}
+
+@media (max-width: 767px) {
+    .footerbuy-sizer {
+        width: 90%;
+    }
+
+    .mobile-only {
+        display: block;
+    }
+
+    .desktop-only {
+        display: none;
+    }
+
+    .footerbuy-button {
+        font-weight: 600;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1439px) {
+    .footerbuy-sizer {
+        width: 60%;
+    }
+}
+
+@media (min-width: 1440px) {
+    .footerbuy-container {
+        height: 100px;
+    }
+
+    .footerbuy-button {
+        width: 100%;
+    }
+
+    .footerbuy-sizer {
+        width: 30%;
+    }
+}

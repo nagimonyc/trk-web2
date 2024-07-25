@@ -46,7 +46,7 @@ const Subscription2 = () => {
                             onTouchStart={(e) => e.target.style.transform = 'scale(0.95)'} // Also handles touch screens
                             onTouchEnd={(e) => e.target.style.transform = 'scale(1)'} // Reset on touch end
                         >
-                            <p style={{ fontSize: '17px', margin: 0, fontWeight: '700', color: "white" }}>Start Now</p>
+                            <p style={{ fontSize: '17px', margin: 0, fontWeight: '700', color: "white" }}>Buy Membership</p>
                         </button>
                     </div>
 
