@@ -4,6 +4,7 @@ import Home from './Home';
 import Membership from './Membership';
 import { AuthProvider } from './AuthContext';
 import Membership2 from './Membership2';
+import ScrollToTop from './components/ScrollToTop';
 
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
   return (
     <AuthProvider>
       <Router>
+        <ScrollToTop />
         <Routes>
           <Route path="/join" element={<Membership />} />
           <Route path="/membership" element={<Membership2 />} />
