@@ -11,6 +11,7 @@ import QRDownload from './images/QR-DL.png';
 import googleDownloadImg from './images/google-play-badge.png';
 import appleDownloadImg from './images/AppleDL-SVG.svg';
 import Footer from './components/Footer';
+import { ClipLoader } from "react-spinners";  // Import loading spinner
 
 const Membership = () => {
     const [isModalOpen, setIsModalOpen] = useState(true);
@@ -75,10 +76,22 @@ const Membership = () => {
             if (!userData.isMember) {
                 setCurrentStep(2); // Move to the Payment step
             } else {
-                setCurrentStep(3); // Move to the Activation step
+                setIsLoading(false); // Move to the Activation step
+                setCurrentStep(3);
             }
         }
     }, [currentUser, userData]);
+
+    const handlePaymentComplete = () => {
+        setIsLoading(false);
+    };
+
+    useEffect(() => {
+        // Set the loading state when the current step is 2 (Payment step)
+        if (currentStep === 2) {
+            setIsLoading(true);
+        }
+    }, [currentStep]);
 
     return (
         <div className="membership-container">
@@ -93,14 +106,20 @@ const Membership = () => {
                         <Modal isOpen={isModalOpen} onClose={handleModalClose} />
                     </div>
                 )}
-                {/* I want to add a loading animation here: */}
-                {currentStep === 2 && (
-                    <div id="checkout" style={{ width: '100%', display: 'flex', alignItems: 'center' }}>
-                        <StripeCheckout />
+                {isLoading && currentStep === 2 && (
+                    <div className="loading" style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 50 }}>
+                        <ClipLoader size={50} color={"#ff6633"} loading={isLoading} />
                     </div>
                 )}
-                {isLoading && (
-                    <div className="loading" style={{ width: '100%', display: 'flex', alignItems: 'center' }}>Loading...</div>
+                {currentStep === 2 && (
+                    <div id="checkout-container" style={{ width: '100%', display: 'flex', alignItems: 'center' }}>
+                        <StripeCheckout onPaymentComplete={handlePaymentComplete} />
+                    </div>
+                )}
+                {isLoading && currentStep === 3 && (
+                    <div className="loading" style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 50 }}>
+                        <ClipLoader size={50} color={"#ff6633"} loading={isLoading} />
+                    </div>
                 )}
                 {currentUser && userData.isMember && !isLoading && currentStep === 3 && (
                     <div className="fade-in row-layout" style={{}}>
@@ -108,7 +127,6 @@ const Membership = () => {
                             <Card currentStep={currentStep} firstName={userData.firstName ? userData.firstName : ''} lastName={userData.lastName ? userData.lastName : ''} photoUrl={userData.image ? photoUrl : ''} />
                         </div>
                         <div className="row-layout-info">
-                            {/* <p style={{ fontSize: 20 }}>{userData.isMember ? '✅' : '➡️'} : Complete payment</p> */}
                             <p style={{ fontSize: 20 }}>{userData.firstName ? '✅' : '➡️'} Enter first and last name</p>
                             <div style={{ marginTop: 20, flex: 1, display: 'flex', flexDirection: 'column' }}>
                                 <input
@@ -186,7 +204,6 @@ const Membership = () => {
                                     </p>
                                 </div>
                             )}
-
                         </div>
                     </div>
                 )}
