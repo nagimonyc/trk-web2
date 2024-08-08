@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { initializeStripe } from '../services/stripeService';
 import { useAuth } from '../AuthContext';
 
-function StripeCheckout() {
+function StripeCheckout({ onPaymentComplete }) {  // Accept the callback as a prop
     const { currentUser } = useAuth();
     const stripeCheckoutInstanceRef = useRef(null);
 
@@ -13,6 +13,11 @@ function StripeCheckout() {
                     const stripeCheckoutInstance = await initializeStripe(currentUser.uid, currentUser.email);
                     stripeCheckoutInstanceRef.current = stripeCheckoutInstance;
                     stripeCheckoutInstance.mount('#checkout');
+
+                    // Notify parent component that payment setup is complete
+                    if (onPaymentComplete) {
+                        onPaymentComplete();
+                    }
                 } catch (error) {
                     console.error('Error setting up Stripe:', error);
                 }
@@ -29,8 +34,7 @@ function StripeCheckout() {
         };
     }, [currentUser?.uid]); // Depend on currentUser.uid to re-run the effect
 
-
-    return null; // Or render something related to the checkout process
+    return <div id="checkout" style={{ width: '100%', display: 'flex', alignItems: 'center' }}></div>; // Add a div for Stripe to mount the checkout form
 }
 
 export default StripeCheckout;
