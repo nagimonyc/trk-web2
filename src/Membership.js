@@ -25,6 +25,16 @@ const Membership = () => {
     const [user, setUser] = useState(null);  // State for user data
     const [deviceType, setDeviceType] = useState(null);
 
+
+    useEffect(() => {
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        if (/android/i.test(userAgent)) {
+            setDeviceType('Android');
+        } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            setDeviceType('iOS');
+        }
+    }, []);
+
     useEffect(() => {
         if (currentUser) {
             const fetchUserDetails = async () => {
