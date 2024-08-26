@@ -30,7 +30,7 @@ const FooterBuy = () => {
                 <div className="desktop-only" style={{ flexDirection: 'row' }}>
                     <div style={{ width: '66%' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', marginRight: 75, lineHeight: '18px' }}>
-                            <p style={{ margin: 0, fontSize: 14, alignSelf: 'center' }}>4-gym membership</p>
+                            <p style={{ margin: 0, fontSize: 14, alignSelf: 'center' }}>3-gym membership</p>
                             <p style={{ margin: 0, fontSize: 20, fontWeight: '700', padding: 0 }}>$169.99</p>
                         </div>
                         <div style={{}}>
