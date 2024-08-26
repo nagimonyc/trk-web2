@@ -91,7 +91,7 @@ const Subscription = () => {
                             <li>Freeze possible</li>
                         </ul>
                     </div>
-                    <p style={{ marginBottom: 15, fontWeight: '700', color: '#2eba88', fontSize: 12 }}>* based on the price of 4 memberships in NY</p>
+                    <p style={{ marginBottom: 15, fontWeight: '700', color: '#2eba88', fontSize: 12 }}>* based on the price of 3 memberships in NY</p>
                 </div>
             </div>
         </div>
