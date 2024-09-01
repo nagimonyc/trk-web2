@@ -24,7 +24,7 @@ const Subscription = () => {
                         <p className="save-pill">Save $2,460 per year*</p>
                     </div>
                     <div style={{ paddingTop: 5 }}>
-                        <p style={{ fontSize: '56px', fontWeight: '700', color: '#ff6633', marginBottom: 0 }}>$169.99
+                        <p style={{ fontSize: '56px', fontWeight: '700', color: '#ff6633', marginBottom: 0 }}>$199
                             <span style={{ fontSize: '14px' }}>
                                 / mo
                             </span>
@@ -91,7 +91,7 @@ const Subscription = () => {
                             <li>Freeze possible</li>
                         </ul>
                     </div>
-                    <p style={{ marginBottom: 15, fontWeight: '700', color: '#2eba88', fontSize: 12 }}>* based on the price of 3 memberships in NY</p>
+                    <p style={{ marginBottom: 15, fontWeight: '700', color: '#2eba88', fontSize: 12 }}>* based on the price of 4 memberships in NY</p>
                 </div>
             </div>
         </div>
