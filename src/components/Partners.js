@@ -15,7 +15,7 @@ const Partners = () => {
             <h1 className="partners-title">Events</h1>
             <div
                 className="partners-list">
-                <PartnersBox time="6:00 PM" place="partner Place 3" url="" image="Nagimondays-5.avif" />
+                <PartnersBox time="6:00 PM" place="partner Place 3" url="" image="Nagimondays-6.avif" />
                 <PartnersBox time="6:00 PM" place="partner Place 3" url="" image="NagiBingo.avif" />
                 <PartnersBox time="6:00 PM" place="partner Place 3" url="" image="Nagimondays-4.avif" />
                 <PartnersBox time="6:00 PM" place="partner Place 3" url="" image="Nagimondays-3.avif" />
