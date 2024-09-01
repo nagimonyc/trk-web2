@@ -32,7 +32,7 @@ const Subscription2 = () => {
                 <div style={{ paddingLeft: 20, paddingRight: 20 }}>
                     {/* Save money */}
                     <div style={{ paddingTop: 5 }}>
-                        <p className="value-paragraph" >$169.99
+                        <p className="value-paragraph" >$199
                             <span style={{ fontSize: '14px' }}>
                                 / mo
                             </span>
