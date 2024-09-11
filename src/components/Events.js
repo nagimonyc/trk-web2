@@ -18,6 +18,7 @@ const Events = () => {
             <div className="events-list">
                 <EventBox time="MetroRock" place="321 Starr St, Brooklyn" image="bushwick.avif" />
                 <EventBox time="Bouldering Project" place="575 Degraw St, Brooklyn" image="BP.avif" />
+                <EventBox time="Method" place="16 Lombardy St, Newark" image="MethodClimbing.avif" />
                 <EventBox time="Brooklyn Boulders" place="23-10 41st Ave, Queens" image="BKB.avif" />
                 {/* <EventBox time="GP81" place="379 Jefferson St, Brooklyn" image="Gp81.avif" /> */}
                 <EventBox time="Island Rock" place="60 Skyline Dr, Plainview" image="IslandRock.avif" />
