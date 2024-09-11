@@ -87,11 +87,11 @@ const Subscription = () => {
                     <div style={{ borderBottom: '1px solid #e7eaee' }}></div>
                     <div>
                         <ul style={{ paddingLeft: 20 }}>
-                            <li style={{ marginBottom: 16 }}>Cancel anytime. Get refunded for remaining days</li>
+                            <li style={{ marginBottom: 16 }}>Cancel anytime</li>
                             <li>Freeze possible</li>
                         </ul>
                     </div>
-                    <p style={{ marginBottom: 15, fontWeight: '700', color: '#2eba88', fontSize: 12 }}>* based on the price of 4 memberships in NY</p>
+                    <p style={{ marginBottom: 15, fontWeight: '700', color: '#2eba88', fontSize: 12 }}>* based on the price of 5 memberships in NY</p>
                 </div>
             </div>
         </div>
