@@ -8,13 +8,12 @@ const Footer = ({ page }) => {
         <div className="footer-container">
             <img src={nagimoTeam} className="footer-img" alt="Nagimo Team" />
             <div className="footer-messaging">
-                <p>A community built on the mat • Join us
-                    <a href="https://www.instagram.com/nagimosends/">
-                        <img src={instagramLogo} alt="Instagram" style={{ height: 25 }} />
-                    </a>
+                <p>A community built on the mat •&nbsp;<span style={{ fontWeight: '600' }}>Join us</span> <a href="https://www.instagram.com/nagimosends/">
+                    <img src={instagramLogo} alt="Instagram" style={{ height: 25 }} />
+                </a>
                 </p>
             </div>
-        </div>
+        </div >
     );
 }
 
