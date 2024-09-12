@@ -13,7 +13,6 @@ body {
 /* Footer styles */
 .footer-container {
     margin-top: auto;
-    /* Pushes the footer to the bottom */
     width: 100%;
     background-color: #FCF7F3;
     display: flex;
@@ -31,8 +30,21 @@ body {
 .footer-messaging {
     display: flex;
     flex-direction: row;
-    background-color: #FCF7F3;
+    align-items: center;
     justify-content: center;
+    background-color: #FCF7F3;
+    padding: 10px;
+}
+
+.footer-messaging p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.footer-messaging a img {
+    margin-left: 8px;
 }
 
 @media (max-width: 768px) {
